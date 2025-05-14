@@ -1,4 +1,4 @@
-package br.com.gabrizord.gzedusolve.ui;
+package br.com.gzlabs.gzassist.ui;
 
 import javafx.animation.*;
 import javafx.application.Platform;

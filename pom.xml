@@ -83,7 +83,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>br.com.gabrizord.gzedusolve/br.com.gabrizord.gzedusolve.Main
+                            <mainClass>br.com.gzlabs.gzassit/br.com.gzlabs.gzassit.Main
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

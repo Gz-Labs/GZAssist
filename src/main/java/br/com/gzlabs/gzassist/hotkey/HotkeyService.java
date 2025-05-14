@@ -1,4 +1,4 @@
-package br.com.gabrizord.gzedusolve.hotkey;
+package br.com.gzlabs.gzassist.hotkey;
 
 import com.melloware.jintellitype.JIntellitype;
 import com.melloware.jintellitype.JIntellitypeConstants;

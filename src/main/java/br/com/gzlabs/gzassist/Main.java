@@ -1,9 +1,9 @@
-package br.com.gabrizord.gzedusolve;
+package br.com.gzlabs.gzassist;
 
-import br.com.gabrizord.gzedusolve.ai.AiService;
-import br.com.gabrizord.gzedusolve.capture.ScreenshotService;
-import br.com.gabrizord.gzedusolve.core.ScreenshotHotkeyManager;
-import br.com.gabrizord.gzedusolve.ui.OverlayService;
+import br.com.gzlabs.gzassist.ai.AiService;
+import br.com.gzlabs.gzassist.capture.ScreenshotService;
+import br.com.gzlabs.gzassist.core.ScreenshotHotkeyManager;
+import br.com.gzlabs.gzassist.ui.OverlayService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

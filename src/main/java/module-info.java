@@ -1,4 +1,4 @@
-module br.com.gabrizord.gzedusolve {
+module br.com.gzlabs.gzassist {
     requires javafx.controls;
     requires javafx.fxml;
     requires org.slf4j;
@@ -8,6 +8,6 @@ module br.com.gabrizord.gzedusolve {
     requires openai.java.client.okhttp;
 
 
-    opens br.com.gabrizord.gzedusolve to javafx.fxml;
-    exports br.com.gabrizord.gzedusolve;
+    opens br.com.gzlabs.gzassist to javafx.fxml;
+    exports br.com.gzlabs.gzassist;
 }

@@ -1,4 +1,4 @@
-package br.com.gabrizord.gzedusolve;
+package br.com.gzlabs.gzassist;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

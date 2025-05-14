@@ -1,9 +1,9 @@
-package br.com.gabrizord.gzedusolve.core;
+package br.com.gzlabs.gzassist.core;
 
-import br.com.gabrizord.gzedusolve.ai.AiService;
-import br.com.gabrizord.gzedusolve.capture.ScreenshotService;
-import br.com.gabrizord.gzedusolve.hotkey.HotkeyService;
-import br.com.gabrizord.gzedusolve.ui.OverlayService;
+import br.com.gzlabs.gzassist.ai.AiService;
+import br.com.gzlabs.gzassist.capture.ScreenshotService;
+import br.com.gzlabs.gzassist.hotkey.HotkeyService;
+import br.com.gzlabs.gzassist.ui.OverlayService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
