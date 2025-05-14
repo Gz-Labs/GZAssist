@@ -1,7 +1,7 @@
 
 # <div align="center">GZAssist</div>
 
-**Personal screen-reading assistant powered by AI — lightweight, fast, and focused.**
+**<div align="center">Personal screen-reading assistant powered by AI — lightweight, fast, and focused.</div>**
 
 <p align="center">
     <img src="https://img.shields.io/badge/java-21-blue.svg" alt="Java">
