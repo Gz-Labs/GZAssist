@@ -3,6 +3,9 @@
 
 **<div align="center">Personal screen-reading assistant powered by AI — lightweight, fast, and focused.</div>**
 
+> **Note:** The interface is currently under construction and in active development. Some features may be incomplete or
+> subject to change.
+
 <p align="center">
     <img src="https://img.shields.io/badge/java-21-blue.svg" alt="Java">
     <img src="https://img.shields.io/badge/javafx-21-green.svg" alt="JavaFX">
