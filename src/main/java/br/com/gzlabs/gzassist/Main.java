@@ -1,12 +1,8 @@
 package br.com.gzlabs.gzassist;
 
 import br.com.gzlabs.gzassist.application.AnswerService;
-import br.com.gzlabs.gzassist.adapters.GlobalHotkeyBinder;
-import br.com.gzlabs.gzassist.adapters.OpenAiAnswerProvider;
-import br.com.gzlabs.gzassist.util.PromptTemplates;
-import br.com.gzlabs.gzassist.adapters.RobotScreenCapturer;
+import br.com.gzlabs.gzassist.application.AppFactory;
 import br.com.gzlabs.gzassist.presentation.OverlayPopup;
-import com.openai.client.okhttp.OpenAIOkHttpClient;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,7 +13,7 @@ import java.util.concurrent.Executors;
 
 public class Main extends Application {
 
-    private AnswerService coordinator;
+    private AnswerService answerService;
     private ExecutorService executor;
 
     @Override
@@ -27,24 +23,15 @@ public class Main extends Application {
         stage.setTitle("GZAssist");
         stage.show();
 
-        executor = Executors.newFixedThreadPool(2);
         OverlayPopup overlay = new OverlayPopup(stage);
 
-        coordinator = new AnswerService(
-                new RobotScreenCapturer(),
-                new OpenAiAnswerProvider(
-                        OpenAIOkHttpClient.fromEnv(),
-                        new PromptTemplates()
-                ),
-                new GlobalHotkeyBinder(),
-                executor,
-                overlay::handleUiEvent
-        );
+        executor = Executors.newFixedThreadPool(2);
+        answerService = AppFactory.createAnswerService(overlay::handleUiEvent, executor);
     }
 
     @Override
     public void stop() {
-        if (coordinator != null) coordinator.close();
+        if (answerService != null) answerService.close();
         if (executor != null) executor.shutdown();
     }
 
