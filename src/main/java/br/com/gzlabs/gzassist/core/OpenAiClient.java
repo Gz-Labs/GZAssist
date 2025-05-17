@@ -1,4 +1,4 @@
-package br.com.gzlabs.gzassist.ai;
+package br.com.gzlabs.gzassist.core;
 
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;

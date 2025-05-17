@@ -1,8 +1,5 @@
-package br.com.gzlabs.gzassist.app;
+package br.com.gzlabs.gzassist.core;
 
-import br.com.gzlabs.gzassist.ai.OpenAiClient;
-import br.com.gzlabs.gzassist.capture.ScreenshotCapture;
-import br.com.gzlabs.gzassist.hotkey.HotkeyListener;
 import br.com.gzlabs.gzassist.ui.OverlayPopup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,16 +7,16 @@ import org.slf4j.LoggerFactory;
 import java.awt.image.BufferedImage;
 import java.util.concurrent.CompletableFuture;
 
-public class GZAssistManager implements AutoCloseable {
+public class AnswerCoordinator implements AutoCloseable {
 
-    private static final Logger logger = LoggerFactory.getLogger(GZAssistManager.class);
+    private static final Logger logger = LoggerFactory.getLogger(AnswerCoordinator.class);
 
     private final ScreenshotCapture screenshotCapture;
     private final HotkeyListener hotkeyListener;
     private final OpenAiClient ai;
     private final OverlayPopup overlay;
 
-    public GZAssistManager(ScreenshotCapture screenshotCapture, OpenAiClient ai, OverlayPopup overlay) {
+    public AnswerCoordinator(ScreenshotCapture screenshotCapture, OpenAiClient ai, OverlayPopup overlay) {
         this.screenshotCapture = screenshotCapture;
         this.ai = ai;
         this.overlay = overlay;

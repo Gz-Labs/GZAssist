@@ -1,4 +1,4 @@
-package br.com.gzlabs.gzassist.capture;
+package br.com.gzlabs.gzassist.core;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

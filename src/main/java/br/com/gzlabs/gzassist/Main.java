@@ -1,8 +1,8 @@
 package br.com.gzlabs.gzassist;
 
-import br.com.gzlabs.gzassist.ai.OpenAiClient;
-import br.com.gzlabs.gzassist.app.GZAssistManager;
-import br.com.gzlabs.gzassist.capture.ScreenshotCapture;
+import br.com.gzlabs.gzassist.core.OpenAiClient;
+import br.com.gzlabs.gzassist.core.AnswerCoordinator;
+import br.com.gzlabs.gzassist.core.ScreenshotCapture;
 import br.com.gzlabs.gzassist.ui.OverlayPopup;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    private GZAssistManager manager;
+    private AnswerCoordinator coordinator;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -24,13 +24,13 @@ public class Main extends Application {
         OpenAiClient ai = new OpenAiClient();
         OverlayPopup overlay = new OverlayPopup(stage);
 
-        manager = new GZAssistManager(screenshotCapture, ai, overlay);
+        coordinator = new AnswerCoordinator(screenshotCapture, ai, overlay);
     }
 
     @Override
     public void stop() {
-        if (manager != null) {
-            manager.close();
+        if (coordinator != null) {
+            coordinator.close();
         }
     }
 
