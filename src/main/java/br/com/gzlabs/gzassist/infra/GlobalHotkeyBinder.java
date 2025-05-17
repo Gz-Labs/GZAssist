@@ -1,4 +1,4 @@
-package br.com.gzlabs.gzassist.core.impl;
+package br.com.gzlabs.gzassist.infra;
 
 import br.com.gzlabs.gzassist.core.HotkeyBinder;
 import br.com.gzlabs.gzassist.errors.HotkeyException;

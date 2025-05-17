@@ -1,8 +1,10 @@
 package br.com.gzlabs.gzassist;
 
 import br.com.gzlabs.gzassist.core.AnswerService;
-import br.com.gzlabs.gzassist.core.impl.*;
+import br.com.gzlabs.gzassist.infra.GlobalHotkeyBinder;
+import br.com.gzlabs.gzassist.infra.OpenAiAnswerProvider;
 import br.com.gzlabs.gzassist.infra.PromptTemplates;
+import br.com.gzlabs.gzassist.infra.RobotScreenCapturer;
 import br.com.gzlabs.gzassist.ui.OverlayPopup;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import javafx.application.Application;
