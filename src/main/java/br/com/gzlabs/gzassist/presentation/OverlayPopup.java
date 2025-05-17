@@ -1,4 +1,4 @@
-package br.com.gzlabs.gzassist.ui;
+package br.com.gzlabs.gzassist.presentation;
 
 import javafx.animation.*;
 import javafx.application.Platform;

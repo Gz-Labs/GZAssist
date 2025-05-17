@@ -1,11 +1,11 @@
 package br.com.gzlabs.gzassist;
 
-import br.com.gzlabs.gzassist.core.AnswerService;
-import br.com.gzlabs.gzassist.infra.GlobalHotkeyBinder;
-import br.com.gzlabs.gzassist.infra.OpenAiAnswerProvider;
-import br.com.gzlabs.gzassist.infra.PromptTemplates;
-import br.com.gzlabs.gzassist.infra.RobotScreenCapturer;
-import br.com.gzlabs.gzassist.ui.OverlayPopup;
+import br.com.gzlabs.gzassist.application.AnswerService;
+import br.com.gzlabs.gzassist.adapters.GlobalHotkeyBinder;
+import br.com.gzlabs.gzassist.adapters.OpenAiAnswerProvider;
+import br.com.gzlabs.gzassist.util.PromptTemplates;
+import br.com.gzlabs.gzassist.adapters.RobotScreenCapturer;
+import br.com.gzlabs.gzassist.presentation.OverlayPopup;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +22,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("ui/home-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("presentation/home-view.fxml"));
         stage.setScene(new Scene(loader.load(), 320, 240));
         stage.setTitle("GZAssist");
         stage.show();

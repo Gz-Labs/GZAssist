@@ -1,4 +1,4 @@
-package br.com.gzlabs.gzassist.infra;
+package br.com.gzlabs.gzassist.adapters;
 
 import br.com.gzlabs.gzassist.core.ScreenCapturer;
 import br.com.gzlabs.gzassist.errors.CaptureException;

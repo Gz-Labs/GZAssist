@@ -1,7 +1,9 @@
-package br.com.gzlabs.gzassist.infra;
+package br.com.gzlabs.gzassist.adapters;
 
 import br.com.gzlabs.gzassist.core.AnswerProvider;
 import br.com.gzlabs.gzassist.errors.AiException;
+import br.com.gzlabs.gzassist.util.ImageUtils;
+import br.com.gzlabs.gzassist.util.PromptTemplates;
 import com.openai.client.OpenAIClient;
 import com.openai.models.chat.completions.ChatCompletionCreateParams;
 

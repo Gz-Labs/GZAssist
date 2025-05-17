@@ -1,4 +1,4 @@
-package br.com.gzlabs.gzassist.infra;
+package br.com.gzlabs.gzassist.util;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

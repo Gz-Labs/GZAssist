@@ -7,11 +7,9 @@ module br.com.gzlabs.gzassist {
     requires openai.java.core;
     requires openai.java.client.okhttp;
 
-    exports br.com.gzlabs.gzassist;
     exports br.com.gzlabs.gzassist.core;
-    exports br.com.gzlabs.gzassist.ui;
-    exports br.com.gzlabs.gzassist.errors;
+    exports br.com.gzlabs.gzassist.presentation;
+    exports br.com.gzlabs.gzassist;
 
-    opens br.com.gzlabs.gzassist to javafx.fxml;
-    opens br.com.gzlabs.gzassist.ui to javafx.fxml;
+    opens br.com.gzlabs.gzassist.presentation to javafx.fxml;
 }

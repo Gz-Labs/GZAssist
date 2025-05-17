@@ -1,4 +1,4 @@
-package br.com.gzlabs.gzassist.infra;
+package br.com.gzlabs.gzassist.util;
 
 import com.openai.models.ChatModel;
 import com.openai.models.chat.completions.*;
