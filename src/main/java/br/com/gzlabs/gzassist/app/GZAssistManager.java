@@ -7,7 +7,6 @@ import br.com.gzlabs.gzassist.ui.OverlayPopup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.concurrent.CompletableFuture;
 
@@ -30,12 +29,11 @@ public class GZAssistManager implements AutoCloseable {
     private void onHotkeyPressed() {
         try {
             BufferedImage img = screenshotCapture.captureScreen();
-            Rectangle bounds = new Rectangle(0, 0, img.getWidth(), img.getHeight());
             logger.info("Screenshot capturada: {}x{}", img.getWidth(), img.getHeight());
 
             overlay.showLoading();
 
-            CompletableFuture.supplyAsync(() -> ai.solve(bounds))
+            CompletableFuture.supplyAsync(() -> ai.solve(img))
                     .thenAccept(opt ->
                             opt.ifPresentOrElse(
                                     overlay::show,

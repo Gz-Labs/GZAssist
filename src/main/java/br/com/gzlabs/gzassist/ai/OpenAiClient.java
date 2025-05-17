@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.util.Base64;
@@ -37,11 +36,8 @@ public final class OpenAiClient {
         LOGGER.debug("OpenAIClient initialized from environment variables.");
     }
 
-    public Optional<String> solve(Rectangle captureArea) {
+    public Optional<String> solve(BufferedImage screenshot) {
         try {
-            LOGGER.debug("Creating screenshot in area: {}", captureArea);
-            BufferedImage screenshot = new Robot().createScreenCapture(captureArea);
-
             String dataUrl = toBase64DataUrl(screenshot);
             LOGGER.debug("Image converted to data URL, length: {} characters", dataUrl.length());
 
@@ -65,7 +61,8 @@ public final class OpenAiClient {
                     .addUserMessageOfArrayOfContentParts(List.of(textPart, imagePart))
                     .build();
 
-            LOGGER.info("Requesting AI answer for image ({}x{}) with prompt: {}", screenshot.getWidth(), screenshot.getHeight(), PROMPT);
+            LOGGER.info("Requesting AI answer for image ({}x{}) with prompt: {}",
+                    screenshot.getWidth(), screenshot.getHeight(), PROMPT);
 
             return client.chat().completions().create(params)
                     .choices().stream()

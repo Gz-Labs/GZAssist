@@ -1,8 +1,8 @@
 package br.com.gzlabs.gzassist;
 
 import br.com.gzlabs.gzassist.ai.OpenAiClient;
-import br.com.gzlabs.gzassist.capture.ScreenshotCapture;
 import br.com.gzlabs.gzassist.app.GZAssistManager;
+import br.com.gzlabs.gzassist.capture.ScreenshotCapture;
 import br.com.gzlabs.gzassist.ui.OverlayPopup;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
