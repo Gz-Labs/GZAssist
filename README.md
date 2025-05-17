@@ -45,14 +45,14 @@ Simple. Fast. Contextual.
 
 ## 🗂️ Supported Modes
 
-| Mode             | Description                                         |
-|------------------|-----------------------------------------------------|
-| 📘 Exam Question | Solves multiple-choice questions with justification |
-| 💻 Code Debugger | Explains errors or code snippets                    |
-| 📖 Summarizer    | Summarizes long texts or slides                     |
-| 🌍 Translator    | Translates visible content                          |
-| 🔍 Auto Mode     | AI decides best action based on image               |
-| 🔒 LeetCode Mode | Hidden mode for solving LeetCode problems           |
+| Mode             | Description                                         | Status         |
+|------------------|-----------------------------------------------------|----------------|
+| 📘 Exam Question | Solves multiple-choice questions with justification | ✅ Implemented  |
+| 💻 Code Debugger | Explains errors or code snippets                    | 🚧 In Progress |
+| 📖 Summarizer    | Summarizes long texts or slides                     | 🚧 In Progress |
+| 🌍 Translator    | Translates visible content                          | 🚧 In Progress |
+| 🔍 Auto Mode     | AI decides best action based on image               | 🚧 In Progress |
+| 🔒 LeetCode Mode | Hidden mode for solving LeetCode problems           | 🚧 In Progress |
 
 > You can add more modes or customize prompts as needed.
 
