@@ -15,9 +15,9 @@ import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
-public final class AiService {
+public final class OpenAiClient {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AiService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(OpenAiClient.class);
     private static final String PROMPT = """
             Você é um tutor especializado em Engenharia de Software, com experiência em resolver questões de provas. Ao receber a imagem da questão (incluindo enunciado e alternativas), siga este fluxo:
 
@@ -32,7 +32,7 @@ public final class AiService {
 
     private final OpenAIClient client;
 
-    public AiService() {
+    public OpenAiClient() {
         this.client = OpenAIOkHttpClient.fromEnv();
         LOGGER.debug("OpenAIClient initialized from environment variables.");
     }

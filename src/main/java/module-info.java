@@ -9,5 +9,8 @@ module br.com.gzlabs.gzassist {
 
 
     opens br.com.gzlabs.gzassist to javafx.fxml;
+    opens br.com.gzlabs.gzassist.ui to javafx.fxml;
     exports br.com.gzlabs.gzassist;
+    exports br.com.gzlabs.gzassist.ui;
+
 }

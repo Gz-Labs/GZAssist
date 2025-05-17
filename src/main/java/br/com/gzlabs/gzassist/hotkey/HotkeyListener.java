@@ -6,12 +6,12 @@ import javafx.application.Platform;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public final class HotkeyService implements AutoCloseable {
+public final class HotkeyListener implements AutoCloseable {
 
-    private static final Logger LOG = LoggerFactory.getLogger(HotkeyService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(HotkeyListener.class);
     private static final int HOTKEY_ID = 1;
 
-    public HotkeyService(Runnable onTrigger) {
+    public HotkeyListener(Runnable onTrigger) {
         LOG.debug("Inicializando JIntellitype");
         JIntellitype.getInstance();
 

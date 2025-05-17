@@ -14,7 +14,7 @@ import javafx.stage.Screen;
 import javafx.stage.Window;
 import javafx.util.Duration;
 
-public final class OverlayService {
+public final class OverlayPopup {
 
     private static final int AUTO_CLOSE_SECONDS = 5;
     private static final double PANEL_WIDTH = 450;
@@ -29,7 +29,7 @@ public final class OverlayService {
     private final FadeTransition fadeIn;
     private final FadeTransition fadeOut;
 
-    public OverlayService(Window ownerWindow) {
+    public OverlayPopup(Window ownerWindow) {
         this.ownerWindow = ownerWindow;
 
         output = new Label();

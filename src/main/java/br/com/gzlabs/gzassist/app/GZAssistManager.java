@@ -1,9 +1,9 @@
-package br.com.gzlabs.gzassist.core;
+package br.com.gzlabs.gzassist.app;
 
-import br.com.gzlabs.gzassist.ai.AiService;
-import br.com.gzlabs.gzassist.capture.ScreenshotService;
-import br.com.gzlabs.gzassist.hotkey.HotkeyService;
-import br.com.gzlabs.gzassist.ui.OverlayService;
+import br.com.gzlabs.gzassist.ai.OpenAiClient;
+import br.com.gzlabs.gzassist.capture.ScreenshotCapture;
+import br.com.gzlabs.gzassist.hotkey.HotkeyListener;
+import br.com.gzlabs.gzassist.ui.OverlayPopup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,25 +11,25 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.concurrent.CompletableFuture;
 
-public class ScreenshotHotkeyManager implements AutoCloseable {
+public class GZAssistManager implements AutoCloseable {
 
-    private static final Logger logger = LoggerFactory.getLogger(ScreenshotHotkeyManager.class);
+    private static final Logger logger = LoggerFactory.getLogger(GZAssistManager.class);
 
-    private final ScreenshotService screenshotService;
-    private final HotkeyService hotkeyService;
-    private final AiService ai;
-    private final OverlayService overlay;
+    private final ScreenshotCapture screenshotCapture;
+    private final HotkeyListener hotkeyListener;
+    private final OpenAiClient ai;
+    private final OverlayPopup overlay;
 
-    public ScreenshotHotkeyManager(ScreenshotService screenshotService, AiService ai, OverlayService overlay) {
-        this.screenshotService = screenshotService;
+    public GZAssistManager(ScreenshotCapture screenshotCapture, OpenAiClient ai, OverlayPopup overlay) {
+        this.screenshotCapture = screenshotCapture;
         this.ai = ai;
         this.overlay = overlay;
-        this.hotkeyService = new HotkeyService(this::onHotkeyPressed);
+        this.hotkeyListener = new HotkeyListener(this::onHotkeyPressed);
     }
 
     private void onHotkeyPressed() {
         try {
-            BufferedImage img = screenshotService.captureScreen();
+            BufferedImage img = screenshotCapture.captureScreen();
             Rectangle bounds = new Rectangle(0, 0, img.getWidth(), img.getHeight());
             logger.info("Screenshot capturada: {}x{}", img.getWidth(), img.getHeight());
 
@@ -49,6 +49,6 @@ public class ScreenshotHotkeyManager implements AutoCloseable {
 
     @Override
     public void close() {
-        hotkeyService.close();
+        hotkeyListener.close();
     }
 }
