@@ -81,28 +81,33 @@ public final class OverlayPopup {
         fadeOut.setOnFinished(ev -> popup.hide());
     }
 
-    public void showLoading() {
+    public void handleUiEvent(UiEvent event) {
         Platform.runLater(() -> {
-            spinner.setVisible(true);
-            output.setVisible(false);
-            open();
-            autoClose.stop();
+            switch (event.type()) {
+                case LOADING -> {
+                    spinner.setVisible(true);
+                    output.setVisible(false);
+                    open();
+                    autoClose.stop();
+                }
+                case SUCCESS -> {
+                    output.setText(event.message().strip());
+                    spinner.setVisible(false);
+                    output.setVisible(true);
+                    open();
+                    autoClose.playFromStart();
+                }
+                case ERROR -> {
+                    output.setText("⚠ Erro:\n" + event.message());
+                    spinner.setVisible(false);
+                    output.setVisible(true);
+                    open();
+                    autoClose.playFromStart();
+                }
+            }
         });
     }
 
-    public void show(String answer) {
-        Platform.runLater(() -> {
-            output.setText(answer.strip());
-            spinner.setVisible(false);
-            output.setVisible(true);
-            open();
-            autoClose.playFromStart();
-        });
-    }
-
-    public void showError(String msg) {
-        show("⚠ Erro:\n" + msg);
-    }
 
     private void open() {
         if (!popup.isShowing()) {

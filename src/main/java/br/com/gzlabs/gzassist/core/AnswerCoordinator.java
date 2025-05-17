@@ -1,49 +1,79 @@
 package br.com.gzlabs.gzassist.core;
 
-import br.com.gzlabs.gzassist.ui.OverlayPopup;
+import br.com.gzlabs.gzassist.errors.AiException;
+import br.com.gzlabs.gzassist.errors.CaptureException;
+import br.com.gzlabs.gzassist.errors.HotkeyException;
+import br.com.gzlabs.gzassist.ui.UiEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.awt.image.BufferedImage;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
 
-public class AnswerCoordinator implements AutoCloseable {
+public final class AnswerCoordinator implements AutoCloseable {
 
-    private static final Logger logger = LoggerFactory.getLogger(AnswerCoordinator.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AnswerCoordinator.class);
 
-    private final ScreenshotCapture screenshotCapture;
-    private final HotkeyListener hotkeyListener;
-    private final OpenAiClient ai;
-    private final OverlayPopup overlay;
+    private final ScreenCapturer capturer;
+    private final AnswerProvider provider;
+    private final HotkeyBinder hotkey;
+    private final Executor executor;
+    private final Consumer<UiEvent> uiHandler;
 
-    public AnswerCoordinator(ScreenshotCapture screenshotCapture, OpenAiClient ai, OverlayPopup overlay) {
-        this.screenshotCapture = screenshotCapture;
-        this.ai = ai;
-        this.overlay = overlay;
-        this.hotkeyListener = new HotkeyListener(this::onHotkeyPressed);
+    public AnswerCoordinator(ScreenCapturer capturer,
+                             AnswerProvider provider,
+                             HotkeyBinder hotkey,
+                             Executor executor,
+                             Consumer<UiEvent> uiHandler) throws HotkeyException {
+        this.capturer = capturer;
+        this.provider = provider;
+        this.hotkey = hotkey;
+        this.executor = executor;
+        this.uiHandler = uiHandler;
+
+        this.hotkey.register(this::onHotkeyTriggered);
     }
 
-    private void onHotkeyPressed() {
+    private void onHotkeyTriggered() {
+        uiHandler.accept(UiEvent.loading());
+
+        CompletableFuture
+                .supplyAsync(this::processScreenshot, executor)
+                .thenAccept(uiHandler)
+                .exceptionally(ex -> {
+                    LOG.error("Erro inesperado durante o processamento", ex);
+                    uiHandler.accept(UiEvent.error("Erro inesperado: " + ex.getMessage()));
+                    return null;
+                });
+    }
+
+    private UiEvent processScreenshot() {
         try {
-            BufferedImage img = screenshotCapture.captureScreen();
-            logger.info("Screenshot capturada: {}x{}", img.getWidth(), img.getHeight());
+            BufferedImage screenshot = capturer.capture();
+            LOG.info("Screenshot capturada com sucesso ({}x{})", screenshot.getWidth(), screenshot.getHeight());
 
-            overlay.showLoading();
+            Optional<String> response = provider.answer(screenshot);
+            return response.map(UiEvent::success)
+                    .orElseGet(() -> UiEvent.error("Sem resposta da IA"));
 
-            CompletableFuture.supplyAsync(() -> ai.solve(img))
-                    .thenAccept(opt ->
-                            opt.ifPresentOrElse(
-                                    overlay::show,
-                                    () -> overlay.showError("Sem resposta da IA")
-                            ));
-        } catch (Exception e) {
-            logger.error("Erro ao capturar tela", e);
-            overlay.showError("Falha ao capturar tela");
+        } catch (CaptureException e) {
+            LOG.warn("Falha na captura de tela", e);
+            return UiEvent.error("Erro ao capturar a tela");
+        } catch (AiException e) {
+            LOG.warn("Falha ao consultar IA", e);
+            return UiEvent.error("Erro ao obter resposta da IA");
         }
     }
 
     @Override
     public void close() {
-        hotkeyListener.close();
+        try {
+            hotkey.close();
+        } catch (Exception e) {
+            LOG.warn("Erro ao fechar recursos do hotkey", e);
+        }
     }
 }

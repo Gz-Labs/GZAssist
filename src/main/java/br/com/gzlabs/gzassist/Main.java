@@ -1,37 +1,49 @@
 package br.com.gzlabs.gzassist;
 
-import br.com.gzlabs.gzassist.core.OpenAiClient;
 import br.com.gzlabs.gzassist.core.AnswerCoordinator;
-import br.com.gzlabs.gzassist.core.ScreenshotCapture;
+import br.com.gzlabs.gzassist.core.impl.*;
+import br.com.gzlabs.gzassist.infra.PromptTemplates;
 import br.com.gzlabs.gzassist.ui.OverlayPopup;
+import com.openai.client.okhttp.OpenAIOkHttpClient;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class Main extends Application {
 
     private AnswerCoordinator coordinator;
+    private ExecutorService executor;
 
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("ui/home-view.fxml"));
         stage.setScene(new Scene(loader.load(), 320, 240));
-        stage.setTitle("Hello!");
+        stage.setTitle("GZAssist");
         stage.show();
 
-        ScreenshotCapture screenshotCapture = new ScreenshotCapture();
-        OpenAiClient ai = new OpenAiClient();
+        executor = Executors.newFixedThreadPool(2);
         OverlayPopup overlay = new OverlayPopup(stage);
 
-        coordinator = new AnswerCoordinator(screenshotCapture, ai, overlay);
+        coordinator = new AnswerCoordinator(
+                new RobotScreenCapturer(),
+                new OpenAiAnswerProvider(
+                        OpenAIOkHttpClient.fromEnv(),
+                        new PromptTemplates()
+                ),
+                new GlobalHotkeyBinder(),
+                executor,
+                overlay::handleUiEvent
+        );
     }
 
     @Override
     public void stop() {
-        if (coordinator != null) {
-            coordinator.close();
-        }
+        if (coordinator != null) coordinator.close();
+        if (executor != null) executor.shutdown();
     }
 
     public static void main(String[] args) {

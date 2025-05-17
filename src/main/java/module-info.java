@@ -10,8 +10,8 @@ module br.com.gzlabs.gzassist {
     exports br.com.gzlabs.gzassist;
     exports br.com.gzlabs.gzassist.core;
     exports br.com.gzlabs.gzassist.ui;
+    exports br.com.gzlabs.gzassist.errors;
 
     opens br.com.gzlabs.gzassist to javafx.fxml;
     opens br.com.gzlabs.gzassist.ui to javafx.fxml;
-    opens br.com.gzlabs.gzassist.core to javafx.fxml;
 }
