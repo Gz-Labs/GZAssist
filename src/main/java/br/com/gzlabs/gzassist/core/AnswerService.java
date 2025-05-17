@@ -13,9 +13,9 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.function.Consumer;
 
-public final class AnswerCoordinator implements AutoCloseable {
+public final class AnswerService implements AutoCloseable {
 
-    private static final Logger LOG = LoggerFactory.getLogger(AnswerCoordinator.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AnswerService.class);
 
     private final ScreenCapturer capturer;
     private final AnswerProvider provider;
@@ -23,11 +23,11 @@ public final class AnswerCoordinator implements AutoCloseable {
     private final Executor executor;
     private final Consumer<UiEvent> uiHandler;
 
-    public AnswerCoordinator(ScreenCapturer capturer,
-                             AnswerProvider provider,
-                             HotkeyBinder hotkey,
-                             Executor executor,
-                             Consumer<UiEvent> uiHandler) throws HotkeyException {
+    public AnswerService(ScreenCapturer capturer,
+                         AnswerProvider provider,
+                         HotkeyBinder hotkey,
+                         Executor executor,
+                         Consumer<UiEvent> uiHandler) throws HotkeyException {
         this.capturer = capturer;
         this.provider = provider;
         this.hotkey = hotkey;

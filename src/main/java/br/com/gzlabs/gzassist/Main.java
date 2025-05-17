@@ -1,6 +1,6 @@
 package br.com.gzlabs.gzassist;
 
-import br.com.gzlabs.gzassist.core.AnswerCoordinator;
+import br.com.gzlabs.gzassist.core.AnswerService;
 import br.com.gzlabs.gzassist.core.impl.*;
 import br.com.gzlabs.gzassist.infra.PromptTemplates;
 import br.com.gzlabs.gzassist.ui.OverlayPopup;
@@ -15,7 +15,7 @@ import java.util.concurrent.Executors;
 
 public class Main extends Application {
 
-    private AnswerCoordinator coordinator;
+    private AnswerService coordinator;
     private ExecutorService executor;
 
     @Override
@@ -28,7 +28,7 @@ public class Main extends Application {
         executor = Executors.newFixedThreadPool(2);
         OverlayPopup overlay = new OverlayPopup(stage);
 
-        coordinator = new AnswerCoordinator(
+        coordinator = new AnswerService(
                 new RobotScreenCapturer(),
                 new OpenAiAnswerProvider(
                         OpenAIOkHttpClient.fromEnv(),
