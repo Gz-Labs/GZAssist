@@ -1,4 +1,4 @@
-package br.com.gzlabs.gzassist.ui;
+package br.com.gzlabs.gzassist.presentation;
 
 import javafx.animation.*;
 import javafx.application.Platform;
@@ -14,11 +14,23 @@ import javafx.stage.Screen;
 import javafx.stage.Window;
 import javafx.util.Duration;
 
-public final class OverlayService {
+public final class OverlayPopup {
 
     private static final int AUTO_CLOSE_SECONDS = 5;
     private static final double PANEL_WIDTH = 450;
     private static final double MARGIN = 20;
+    private static final String STYLE_NORMAL = """
+                -fx-text-fill: #ECECF1;
+                -fx-font-size: 15px;
+                -fx-font-family: "Segoe UI Semibold", "Roboto", sans-serif;
+            """;
+    private static final String STYLE_ERROR = """
+                -fx-text-fill: #FFD8D8;
+                -fx-font-size: 15px;
+                -fx-font-family: "Segoe UI Semibold", "Roboto", sans-serif;
+                -fx-font-weight: bold;
+            """;
+
 
     private final Window ownerWindow;
     private final Popup popup;
@@ -29,7 +41,7 @@ public final class OverlayService {
     private final FadeTransition fadeIn;
     private final FadeTransition fadeOut;
 
-    public OverlayService(Window ownerWindow) {
+    public OverlayPopup(Window ownerWindow) {
         this.ownerWindow = ownerWindow;
 
         output = new Label();
@@ -37,11 +49,7 @@ public final class OverlayService {
         output.setTextAlignment(TextAlignment.LEFT);
         output.setAlignment(Pos.TOP_LEFT);
         output.setVisible(false);
-        output.setStyle("""
-                    -fx-text-fill: #ECECF1;
-                    -fx-font-size: 15px;
-                    -fx-font-family: "Segoe UI Semibold", "Roboto", sans-serif;
-                """);
+        output.setStyle(STYLE_NORMAL);
 
         spinner = new ProgressIndicator();
         spinner.setPrefSize(60, 60);
@@ -81,27 +89,33 @@ public final class OverlayService {
         fadeOut.setOnFinished(ev -> popup.hide());
     }
 
-    public void showLoading() {
+    public void handleUiEvent(UiEvent event) {
         Platform.runLater(() -> {
-            spinner.setVisible(true);
-            output.setVisible(false);
-            open();
-            autoClose.stop();
+            switch (event.type()) {
+                case LOADING -> {
+                    spinner.setVisible(true);
+                    output.setVisible(false);
+                    open();
+                    autoClose.stop();
+                }
+                case SUCCESS -> {
+                    showMessage(event.message().strip(), false);
+                    autoClose.playFromStart();
+                }
+                case ERROR -> {
+                    showMessage("⚠ Erro:\n" + event.message().strip(), true);
+                    autoClose.playFromStart();
+                }
+            }
         });
     }
 
-    public void show(String answer) {
-        Platform.runLater(() -> {
-            output.setText(answer.strip());
-            spinner.setVisible(false);
-            output.setVisible(true);
-            open();
-            autoClose.playFromStart();
-        });
-    }
-
-    public void showError(String msg) {
-        show("⚠ Erro:\n" + msg);
+    private void showMessage(String message, boolean isError) {
+        output.setText(message);
+        output.setStyle(isError ? STYLE_ERROR : STYLE_NORMAL);
+        spinner.setVisible(false);
+        output.setVisible(true);
+        open();
     }
 
     private void open() {

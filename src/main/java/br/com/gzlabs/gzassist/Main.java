@@ -1,37 +1,38 @@
 package br.com.gzlabs.gzassist;
 
-import br.com.gzlabs.gzassist.ai.AiService;
-import br.com.gzlabs.gzassist.capture.ScreenshotService;
-import br.com.gzlabs.gzassist.core.ScreenshotHotkeyManager;
-import br.com.gzlabs.gzassist.ui.OverlayService;
+import br.com.gzlabs.gzassist.application.AnswerService;
+import br.com.gzlabs.gzassist.application.AppFactory;
+import br.com.gzlabs.gzassist.presentation.OverlayPopup;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class Main extends Application {
 
-    private ScreenshotHotkeyManager manager;
+    private AnswerService answerService;
+    private ExecutorService executor;
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("hello-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("presentation/home-view.fxml"));
         stage.setScene(new Scene(loader.load(), 320, 240));
-        stage.setTitle("Hello!");
+        stage.setTitle("GZAssist");
         stage.show();
 
-        ScreenshotService screenshotService = new ScreenshotService();
-        AiService ai = new AiService();
-        OverlayService overlay = new OverlayService(stage);
+        OverlayPopup overlay = new OverlayPopup(stage);
 
-        manager = new ScreenshotHotkeyManager(screenshotService, ai, overlay);
+        executor = Executors.newFixedThreadPool(2);
+        answerService = AppFactory.createAnswerService(overlay::handleUiEvent, executor);
     }
 
     @Override
     public void stop() {
-        if (manager != null) {
-            manager.close();
-        }
+        if (answerService != null) answerService.close();
+        if (executor != null) executor.shutdown();
     }
 
     public static void main(String[] args) {
