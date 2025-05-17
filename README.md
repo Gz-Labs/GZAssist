@@ -6,12 +6,12 @@
 > **Note:** The interface is currently under construction and in active development. Some features may be incomplete or
 > subject to change.
 
-<p align="center">
-    <img src="https://img.shields.io/badge/java-21-blue.svg" alt="Java">
-    <img src="https://img.shields.io/badge/javafx-21-green.svg" alt="JavaFX">
-    <img src="https://img.shields.io/badge/build-maven-yellow.svg" alt="Maven">
-    <img src="https://img.shields.io/badge/OS-Windows%2011-lightgrey.svg" alt="Windows">
-</p>
+<div style="text-align: center;">
+    <img src="https://img.shields.io/badge/java-21-blue.svg" alt="Java" />
+    <img src="https://img.shields.io/badge/javafx-21-green.svg" alt="JavaFX" />
+    <img src="https://img.shields.io/badge/build-maven-yellow.svg" alt="Maven" />
+    <img src="https://img.shields.io/badge/OS-Windows%2011-lightgrey.svg" alt="Windows" />
+</div>
 
 ---
 
@@ -52,7 +52,6 @@ Simple, fast, and designed to stay out of your way.
 ```bash
 mvn clean package
 ```
-3. Launch the app and enter your OpenAI API key on first run
 
 ---
 
