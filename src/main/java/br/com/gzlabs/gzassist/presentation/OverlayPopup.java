@@ -19,6 +19,18 @@ public final class OverlayPopup {
     private static final int AUTO_CLOSE_SECONDS = 5;
     private static final double PANEL_WIDTH = 450;
     private static final double MARGIN = 20;
+    private static final String STYLE_NORMAL = """
+                -fx-text-fill: #ECECF1;
+                -fx-font-size: 15px;
+                -fx-font-family: "Segoe UI Semibold", "Roboto", sans-serif;
+            """;
+    private static final String STYLE_ERROR = """
+                -fx-text-fill: #FFD8D8;
+                -fx-font-size: 15px;
+                -fx-font-family: "Segoe UI Semibold", "Roboto", sans-serif;
+                -fx-font-weight: bold;
+            """;
+
 
     private final Window ownerWindow;
     private final Popup popup;
@@ -37,11 +49,7 @@ public final class OverlayPopup {
         output.setTextAlignment(TextAlignment.LEFT);
         output.setAlignment(Pos.TOP_LEFT);
         output.setVisible(false);
-        output.setStyle("""
-                    -fx-text-fill: #ECECF1;
-                    -fx-font-size: 15px;
-                    -fx-font-family: "Segoe UI Semibold", "Roboto", sans-serif;
-                """);
+        output.setStyle(STYLE_NORMAL);
 
         spinner = new ProgressIndicator();
         spinner.setPrefSize(60, 60);
@@ -91,23 +99,24 @@ public final class OverlayPopup {
                     autoClose.stop();
                 }
                 case SUCCESS -> {
-                    output.setText(event.message().strip());
-                    spinner.setVisible(false);
-                    output.setVisible(true);
-                    open();
+                    showMessage(event.message().strip(), false);
                     autoClose.playFromStart();
                 }
                 case ERROR -> {
-                    output.setText("⚠ Erro:\n" + event.message());
-                    spinner.setVisible(false);
-                    output.setVisible(true);
-                    open();
+                    showMessage("⚠ Erro:\n" + event.message().strip(), true);
                     autoClose.playFromStart();
                 }
             }
         });
     }
 
+    private void showMessage(String message, boolean isError) {
+        output.setText(message);
+        output.setStyle(isError ? STYLE_ERROR : STYLE_NORMAL);
+        spinner.setVisible(false);
+        output.setVisible(true);
+        open();
+    }
 
     private void open() {
         if (!popup.isShowing()) {
