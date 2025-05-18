@@ -7,9 +7,13 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import static javafx.scene.paint.Color.web;
 
 public class Main extends Application {
 
@@ -19,8 +23,15 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("presentation/home-view.fxml"));
-        stage.setScene(new Scene(loader.load(), 320, 240));
+        Scene scene = new Scene(loader.load(), 430, 680, web("#181a1b"));
+        scene.getStylesheets().add(
+                Objects.requireNonNull(getClass().getResource("presentation/style.css")).toExternalForm()
+        );
+        stage.setScene(scene);
         stage.setTitle("GZAssist");
+        stage.setResizable(false);
+        stage.setMaximized(false);
+        stage.initStyle(StageStyle.DECORATED);
         stage.show();
 
         OverlayPopup overlay = new OverlayPopup(stage);
