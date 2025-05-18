@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane fx:id="rootPane"
+           xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="br.com.gzlabs.gzassist.presentation.OverlayController"
+           stylesheets="@overlay.css"
+           styleClass="overlay-root">
+
+    <ProgressIndicator fx:id="spinner"
+                       prefWidth="60" prefHeight="60"
+                       styleClass="overlay-spinner"/>
+    <Label fx:id="messageLabel"
+           wrapText="true"
+           visible="false"
+           styleClass="overlay-label"/>
+</StackPane>
