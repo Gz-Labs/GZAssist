@@ -2,22 +2,26 @@ package br.com.gzlabs.gzassist.presentation;
 
 import br.com.gzlabs.gzassist.config.AppConfig;
 import javafx.fxml.FXML;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 public class SettingsController {
 
     @FXML
     private TextField apiKeyField;
+
     @FXML
     private TextField hotkeyField;
+
     @FXML
     private Spinner<Integer> timeoutSpinner;
 
     @FXML
     public void initialize() {
+        carregarConfiguracoesGerais();
+    }
+
+    private void carregarConfiguracoesGerais() {
         apiKeyField.setText(AppConfig.getApiKey());
         hotkeyField.setText(AppConfig.getHotkey());
         timeoutSpinner.setValueFactory(
@@ -27,10 +31,14 @@ public class SettingsController {
 
     @FXML
     protected void onSaveClick() {
+        salvarConfiguracoesGerais();
+        closeWindow();
+    }
+
+    private void salvarConfiguracoesGerais() {
         AppConfig.setApiKey(apiKeyField.getText().trim());
         AppConfig.setHotkey(hotkeyField.getText().trim());
         AppConfig.setOverlayTimeout(timeoutSpinner.getValue());
-        closeWindow();
     }
 
     @FXML

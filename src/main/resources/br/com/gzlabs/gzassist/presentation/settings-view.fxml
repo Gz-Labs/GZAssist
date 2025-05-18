@@ -2,30 +2,77 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<VBox spacing="12" alignment="CENTER" xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="br.com.gzlabs.gzassist.presentation.SettingsController"
-      styleClass="root-card" stylesheets="@style.css">
+<?import javafx.geometry.Insets?>
 
-    <Label text="Configurações" styleClass="title"/>
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="br.com.gzlabs.gzassist.presentation.SettingsController"
+           stylesheets="@style.css"
+           styleClass="root-card">
 
-    <HBox spacing="8" alignment="CENTER_LEFT">
-        <Label text="API Key:"/>
-        <TextField fx:id="apiKeyField" HBox.hgrow="ALWAYS" promptText="sua-chave-aqui"/>
-    </HBox>
+    <VBox spacing="20" alignment="TOP_CENTER">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
 
-    <HBox spacing="8" alignment="CENTER_LEFT">
-        <Label text="Hotkey:"/>
-        <TextField fx:id="hotkeyField" prefWidth="200" promptText="CTRL+ALT+K"/>
-    </HBox>
+        <Label text="⚙ Settings" styleClass="title"/>
 
-    <HBox spacing="8" alignment="CENTER_LEFT">
-        <Label text="Overlay Timeout (s):"/>
-        <Spinner fx:id="timeoutSpinner" prefWidth="80"/>
-    </HBox>
+        <TabPane id="settingsTabPane" tabClosingPolicy="UNAVAILABLE" prefWidth="400">
 
-    <HBox spacing="20" alignment="CENTER">
-        <Button text="Salvar" onAction="#onSaveClick"/>
-        <Button text="Cancelar" onAction="#onCancelClick"/>
-    </HBox>
-</VBox>
+            <Tab text="🔐 General">
+                <VBox spacing="16">
+                    <padding>
+                        <Insets top="14" right="18" bottom="14" left="18"/>
+                    </padding>
+
+                    <Label text="API Key:" styleClass="subtitle"/>
+                    <TextField fx:id="apiKeyField" promptText="sk-..."/>
+
+                    <Label text="Atalho Global:" styleClass="subtitle"/>
+                    <TextField fx:id="hotkeyField" promptText="CTRL+ALT+K"/>
+
+                    <Label text="Tempo do Overlay (segundos):" styleClass="subtitle"/>
+                    <Spinner fx:id="timeoutSpinner" prefWidth="80"/>
+                </VBox>
+            </Tab>
+
+            <Tab text="🎨 Interface">
+                <VBox spacing="12">
+                    <padding>
+                        <Insets top="14" right="18" bottom="14" left="18"/>
+                    </padding>
+                    <Label text="(Configurações de tema e aparência em breve)" styleClass="subtitle"/>
+                </VBox>
+            </Tab>
+
+            <Tab text="🤖 IA">
+                <VBox spacing="12">
+                    <padding>
+                        <Insets top="14" right="18" bottom="14" left="18"/>
+                    </padding>
+                    <Label text="(Configurações de modelo e parâmetros da IA em breve)" styleClass="subtitle"/>
+                </VBox>
+            </Tab>
+
+            <Tab text="⚙️ Advanced">
+                <VBox spacing="12">
+                    <padding>
+                        <Insets top="14" right="18" bottom="14" left="18"/>
+                    </padding>
+                    <Label text="(Funcionalidades avançadas em breve)" styleClass="subtitle"/>
+                </VBox>
+            </Tab>
+
+        </TabPane>
+
+        <HBox spacing="12" alignment="CENTER_RIGHT">
+            <padding>
+                <Insets top="8"/>
+            </padding>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Cancelar" onAction="#onCancelClick" styleClass="footer-btn"/>
+            <Button text="Salvar" onAction="#onSaveClick" styleClass="footer-btn"/>
+        </HBox>
+
+    </VBox>
+
+</StackPane>

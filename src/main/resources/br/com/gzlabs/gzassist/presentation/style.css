@@ -131,3 +131,49 @@
     -fx-text-fill: #ECECF1;
     -fx-border-color: #ececf188;
 }
+
+#settingsTabPane {
+    -fx-background-color: #23232A;
+}
+
+#settingsTabPane .tab-header-area {
+    -fx-background-color: #23232A;
+    -fx-border-color: #37384899;
+    -fx-border-width: 0 0 1 0;
+}
+
+#settingsTabPane .tab-header-background {
+    -fx-background-color: #23232A;
+}
+
+#settingsTabPane .tab {
+    -fx-background-color: #23232A;
+    -fx-border-color: transparent;
+    -fx-padding: 8 14 8 14;
+}
+
+#settingsTabPane .tab:hover {
+    -fx-background-color: #2a2a34;
+}
+
+#settingsTabPane .tab:selected {
+    -fx-background-color: #2e2e3a;
+    -fx-border-color: #ECECF1;
+    -fx-border-width: 0 0 2 0;
+}
+
+#settingsTabPane .tab:selected .tab-label {
+    -fx-text-fill: #ECECF1;
+    -fx-font-weight: bold;
+}
+
+#settingsTabPane .tab .tab-label {
+    -fx-text-fill: #B3B3BE;
+    -fx-font-size: 13px;
+    -fx-font-family: "Segoe UI Semibold", "Roboto", sans-serif;
+}
+
+#settingsTabPane .tab-content-area {
+    -fx-background-color: #23232A;
+    -fx-padding: 12 0 0 0;
+}
