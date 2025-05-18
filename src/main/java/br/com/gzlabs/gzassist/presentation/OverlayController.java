@@ -23,6 +23,7 @@ public final class OverlayController {
     private static final int AUTO_CLOSE_SECONDS = 5;
     private static final double PANEL_WIDTH = 450;
     private static final double MARGIN = 20;
+    private static final String ERROR_STYLE_CLASS = "error";
 
     private FadeTransition fadeIn;
     private FadeTransition fadeOut;
@@ -68,13 +69,13 @@ public final class OverlayController {
         spinner.setVisible(false);
         messageLabel.setVisible(false);
         messageLabel.setText("");
-        messageLabel.getStyleClass().remove("error");
     }
 
     private void showMessage(String message, boolean isError) {
         messageLabel.setText(message);
+        messageLabel.getStyleClass().remove(ERROR_STYLE_CLASS);
         if (isError) {
-            messageLabel.getStyleClass().add("error");
+            messageLabel.getStyleClass().add(ERROR_STYLE_CLASS);
         }
 
         spinner.setVisible(false);
@@ -89,7 +90,11 @@ public final class OverlayController {
         };
 
         messageLabel.heightProperty().addListener(listener);
+
+        new javafx.animation.PauseTransition(Duration.millis(100))
+                .setOnFinished(e -> show());
     }
+
 
     private void show() {
         if (!popup.isShowing()) {
