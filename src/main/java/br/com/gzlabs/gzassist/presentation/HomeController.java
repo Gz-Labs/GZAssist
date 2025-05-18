@@ -1,5 +1,6 @@
 package br.com.gzlabs.gzassist.presentation;
 
+import br.com.gzlabs.gzassist.core.Mode;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,6 +11,7 @@ public class HomeController {
 
     private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
     private static final String SELECTED_STYLE_CLASS = "selected";
+    private Mode selectedMode = Mode.EXAM_QUESTION;
 
     @FXML private Button examQuestionBtn;
     @FXML private Button codeExplainBtn;
@@ -22,30 +24,35 @@ public class HomeController {
     @FXML
     protected void onExamQuestionClick() {
         highlightSelected(examQuestionBtn);
+        selectedMode = Mode.EXAM_QUESTION;
         LOG.info("Mode: Capture & Solve Question selected");
     }
 
     @FXML
     protected void onCodeExplainClick() {
         highlightSelected(codeExplainBtn);
+        selectedMode = Mode.CODE_EXPLAIN;
         LOG.info("Mode: Capture & Explain Code selected");
     }
 
     @FXML
     protected void onSummarizeClick() {
         highlightSelected(summarizeBtn);
+        selectedMode = Mode.SUMMARIZE;
         LOG.info("Mode: Capture & Summarize Text selected");
     }
 
     @FXML
     protected void onTranslateClick() {
         highlightSelected(translateBtn);
+        selectedMode = Mode.TRANSLATE;
         LOG.info("Mode: Capture & Translate selected");
     }
 
     @FXML
     protected void onAutoDetectClick() {
         highlightSelected(autoDetectBtn);
+        selectedMode = Mode.AUTO_DETECT;
         LOG.info("Mode: AutoDetect (AI decides) selected");
     }
 
@@ -69,4 +76,9 @@ public class HomeController {
         }
         selectedBtn = btn;
     }
+
+    public Mode getSelectedMode() {
+        return selectedMode;
+    }
+
 }

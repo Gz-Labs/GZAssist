@@ -2,6 +2,7 @@ package br.com.gzlabs.gzassist.application;
 
 import br.com.gzlabs.gzassist.core.AnswerProvider;
 import br.com.gzlabs.gzassist.core.HotkeyBinder;
+import br.com.gzlabs.gzassist.core.Mode;
 import br.com.gzlabs.gzassist.core.ScreenCapturer;
 import br.com.gzlabs.gzassist.errors.AiException;
 import br.com.gzlabs.gzassist.errors.CaptureException;
@@ -15,6 +16,7 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 public final class AnswerService implements AutoCloseable {
 
@@ -25,18 +27,20 @@ public final class AnswerService implements AutoCloseable {
     private final HotkeyBinder hotkey;
     private final Executor executor;
     private final Consumer<UiEvent> uiHandler;
+    private final Supplier<Mode> modeSupplier;
+
 
     public AnswerService(ScreenCapturer capturer,
                          AnswerProvider provider,
                          HotkeyBinder hotkey,
                          Executor executor,
-                         Consumer<UiEvent> uiHandler) throws HotkeyException {
+                         Consumer<UiEvent> uiHandler, Supplier<Mode> modeSupplier) throws HotkeyException {
         this.capturer = capturer;
         this.provider = provider;
         this.hotkey = hotkey;
         this.executor = executor;
         this.uiHandler = uiHandler;
-
+        this.modeSupplier = modeSupplier;
         this.hotkey.register(this::onHotkeyTriggered);
     }
 
@@ -58,7 +62,9 @@ public final class AnswerService implements AutoCloseable {
             BufferedImage screenshot = capturer.capture();
             LOG.info("Screenshot capturada com sucesso ({}x{})", screenshot.getWidth(), screenshot.getHeight());
 
-            Optional<String> response = provider.answer(screenshot);
+            Mode mode = modeSupplier.get();
+
+            Optional<String> response = provider.answer(screenshot, mode);
             return response.map(UiEvent::success)
                     .orElseGet(() -> UiEvent.error("Sem resposta da IA"));
 

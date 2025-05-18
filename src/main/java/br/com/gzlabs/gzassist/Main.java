@@ -2,6 +2,7 @@ package br.com.gzlabs.gzassist;
 
 import br.com.gzlabs.gzassist.application.AnswerService;
 import br.com.gzlabs.gzassist.application.AppFactory;
+import br.com.gzlabs.gzassist.presentation.HomeController;
 import br.com.gzlabs.gzassist.presentation.OverlayPopup;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -35,9 +36,10 @@ public class Main extends Application {
         stage.show();
 
         OverlayPopup overlay = new OverlayPopup(stage);
+        HomeController homeController = loader.getController();
 
         executor = Executors.newFixedThreadPool(2);
-        answerService = AppFactory.createAnswerService(overlay::handleUiEvent, executor);
+        answerService = AppFactory.createAnswerService(overlay::handleUiEvent, executor, homeController::getSelectedMode);
     }
 
     @Override
