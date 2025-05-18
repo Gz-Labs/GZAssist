@@ -39,6 +39,9 @@ public class SettingsController {
         AppConfig.setApiKey(apiKeyField.getText().trim());
         AppConfig.setHotkey(hotkeyField.getText().trim());
         AppConfig.setOverlayTimeout(timeoutSpinner.getValue());
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Settings saved successfully!", ButtonType.OK);
+        alert.setHeaderText(null);
+        alert.showAndWait();
     }
 
     @FXML

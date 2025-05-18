@@ -9,68 +9,84 @@
            stylesheets="@style.css"
            styleClass="root-card">
 
-    <VBox spacing="20" alignment="TOP_CENTER">
+    <VBox spacing="30" alignment="TOP_CENTER" maxWidth="800">
         <padding>
-            <Insets top="20" right="20" bottom="20" left="20"/>
+            <Insets top="40" bottom="30" left="40" right="40"/>
         </padding>
 
-        <Label text="⚙ Settings" styleClass="title"/>
+        <Label text="Settings" styleClass="title"/>
 
-        <TabPane id="settingsTabPane" tabClosingPolicy="UNAVAILABLE" prefWidth="400">
+        <TabPane id="settingsTabPane"
+                 tabClosingPolicy="UNAVAILABLE"
 
-            <Tab text="🔐 General">
+
+        >
+
+
+            <!-- GENERAL -->
+            <Tab text="General">
                 <VBox spacing="16">
                     <padding>
                         <Insets top="14" right="18" bottom="14" left="18"/>
                     </padding>
 
-                    <Label text="API Key:" styleClass="subtitle"/>
-                    <TextField fx:id="apiKeyField" promptText="sk-..."/>
-
-                    <Label text="Atalho Global:" styleClass="subtitle"/>
-                    <TextField fx:id="hotkeyField" promptText="CTRL+ALT+K"/>
-
-                    <Label text="Tempo do Overlay (segundos):" styleClass="subtitle"/>
+                    <Label text="Overlay timeout (seconds):" styleClass="subtitle"/>
                     <Spinner fx:id="timeoutSpinner" prefWidth="80"/>
+
+                    <Label text="(More general settings coming soon...)" styleClass="subtitle"/>
                 </VBox>
             </Tab>
 
-            <Tab text="🎨 Interface">
+            <!-- API KEYS -->
+            <Tab text="API Keys">
+                <VBox spacing="16">
+                    <padding>
+                        <Insets top="14" right="18" bottom="14" left="18"/>
+                    </padding>
+
+                    <Label text="OpenAI API Key:" styleClass="subtitle"/>
+                    <TextField fx:id="apiKeyField" promptText="sk-..."/>
+                </VBox>
+            </Tab>
+
+            <!-- HOTKEYS -->
+            <Tab text="Hotkeys">
+                <VBox spacing="16">
+                    <padding>
+                        <Insets top="14" right="18" bottom="14" left="18"/>
+                    </padding>
+
+                    <Label text="Global hotkey:" styleClass="subtitle"/>
+                    <TextField fx:id="hotkeyField" promptText="CTRL+ALT+K"/>
+                </VBox>
+            </Tab>
+
+            <!-- INTERFACE -->
+            <Tab text="Interface">
                 <VBox spacing="12">
                     <padding>
                         <Insets top="14" right="18" bottom="14" left="18"/>
                     </padding>
-                    <Label text="(Configurações de tema e aparência em breve)" styleClass="subtitle"/>
+                    <Label text="(Theme and appearance settings coming soon...)" styleClass="subtitle"/>
                 </VBox>
             </Tab>
 
-            <Tab text="🤖 IA">
+            <!-- ADVANCED -->
+            <Tab text="Advanced">
                 <VBox spacing="12">
                     <padding>
                         <Insets top="14" right="18" bottom="14" left="18"/>
                     </padding>
-                    <Label text="(Configurações de modelo e parâmetros da IA em breve)" styleClass="subtitle"/>
-                </VBox>
-            </Tab>
-
-            <Tab text="⚙️ Advanced">
-                <VBox spacing="12">
-                    <padding>
-                        <Insets top="14" right="18" bottom="14" left="18"/>
-                    </padding>
-                    <Label text="(Funcionalidades avançadas em breve)" styleClass="subtitle"/>
+                    <Label text="(Advanced features coming soon...)" styleClass="subtitle"/>
                 </VBox>
             </Tab>
 
         </TabPane>
 
-        <HBox spacing="12" alignment="CENTER_RIGHT">
-            <padding>
-                <Insets top="8"/>
-            </padding>
+        <HBox spacing="12" alignment="CENTER_RIGHT" maxWidth="480">
             <Region HBox.hgrow="ALWAYS"/>
-            <Button text="Cancelar" onAction="#onCancelClick" styleClass="footer-btn"/>
-            <Button text="Salvar" onAction="#onSaveClick" styleClass="footer-btn"/>
+            <Button text="Cancel" onAction="#onCancelClick" styleClass="footer-btn"/>
+            <Button text="Save" onAction="#onSaveClick" styleClass="footer-btn"/>
         </HBox>
 
     </VBox>

@@ -66,17 +66,18 @@ public class HomeController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("settings-view.fxml"));
             Parent root = loader.load();
-            Stage dialog = new Stage();
-            dialog.initOwner(examQuestionBtn.getScene().getWindow());
-            dialog.initModality(Modality.APPLICATION_MODAL);
-            dialog.setScene(new Scene(root));
-            dialog.setTitle("Configurações");
-            dialog.showAndWait();
+            Stage stage = new Stage();
+            stage.setMinWidth(650);
+            stage.setMinHeight(450);
+            stage.initOwner(examQuestionBtn.getScene().getWindow());
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(root));
+            stage.setTitle("Settings");
+            stage.showAndWait();
         } catch (Exception e) {
             LOG.error("Não foi possível abrir configurações", e);
         }
     }
-
 
     @FXML
     protected void onExitClick() {
