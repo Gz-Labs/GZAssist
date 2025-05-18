@@ -1,0 +1,23 @@
+.overlay-root {
+    -fx-background-color: rgba(52, 53, 65, 0.95);
+    -fx-background-radius: 10;
+    -fx-padding: 18 24 18 24;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.45), 12, 0, 0, 3);
+    -fx-pref-width: 450;
+    -fx-max-width: 450;
+}
+
+.overlay-label {
+    -fx-text-fill: #ECECF1;
+    -fx-font-size: 15px;
+    -fx-font-family: "Segoe UI Semibold", "Roboto", sans-serif;
+}
+
+.overlay-label.error {
+    -fx-text-fill: #FFD8D8;
+    -fx-font-weight: bold;
+}
+
+.overlay-spinner {
+    -fx-progress-color: #10A37F;
+}
