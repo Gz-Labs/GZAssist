@@ -1,6 +1,7 @@
 package br.com.gzlabs.gzassist.adapters;
 
 import br.com.gzlabs.gzassist.core.AnswerProvider;
+import br.com.gzlabs.gzassist.core.Mode;
 import br.com.gzlabs.gzassist.errors.AiException;
 import br.com.gzlabs.gzassist.util.ImageUtils;
 import br.com.gzlabs.gzassist.util.PromptTemplates;
@@ -21,10 +22,16 @@ public final class OpenAiAnswerProvider implements AnswerProvider {
     }
 
     @Override
-    public Optional<String> answer(BufferedImage screenshot) throws AiException {
+    public Optional<String> answer(BufferedImage screenshot, Mode mode) throws AiException {
         try {
             String dataUrl = ImageUtils.toDataUrl(screenshot);
-            ChatCompletionCreateParams params = templates.forExamQuestion(dataUrl);
+            ChatCompletionCreateParams params = switch (mode) {
+                case EXAM_QUESTION -> templates.forExamQuestion(dataUrl);
+                case CODE_EXPLAIN -> templates.forCodeExplain(dataUrl);
+                case SUMMARIZE -> templates.forSummarize(dataUrl);
+                case TRANSLATE -> templates.forTranslate(dataUrl);
+                case AUTO_DETECT -> templates.forAutoDetect(dataUrl);
+            };
             return client.chat().completions().create(params)
                     .choices().stream()
                     .findFirst()
