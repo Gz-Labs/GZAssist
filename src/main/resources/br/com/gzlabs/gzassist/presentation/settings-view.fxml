@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-
 <StackPane xmlns:fx="http://javafx.com/fxml"
            fx:controller="br.com.gzlabs.gzassist.presentation.SettingsController"
-           stylesheets="@style.css"
+           stylesheets="@settings.css"
            styleClass="root-card">
 
     <VBox spacing="30" alignment="TOP_CENTER" maxWidth="800">

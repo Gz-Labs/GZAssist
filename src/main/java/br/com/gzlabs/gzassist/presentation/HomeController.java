@@ -18,11 +18,16 @@ public class HomeController {
     private static final String SELECTED_STYLE_CLASS = "selected";
     private Mode selectedMode = Mode.EXAM_QUESTION;
 
-    @FXML private Button examQuestionBtn;
-    @FXML private Button codeExplainBtn;
-    @FXML private Button summarizeBtn;
-    @FXML private Button translateBtn;
-    @FXML private Button autoDetectBtn;
+    @FXML
+    private Button examQuestionBtn;
+    @FXML
+    private Button codeExplainBtn;
+    @FXML
+    private Button summarizeBtn;
+    @FXML
+    private Button translateBtn;
+    @FXML
+    private Button autoDetectBtn;
 
     private Button selectedBtn;
 
@@ -71,8 +76,10 @@ public class HomeController {
             stage.setMinHeight(450);
             stage.initOwner(examQuestionBtn.getScene().getWindow());
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(new Scene(root));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
             stage.setTitle("Settings");
+
             stage.showAndWait();
         } catch (Exception e) {
             LOG.error("Não foi possível abrir configurações", e);

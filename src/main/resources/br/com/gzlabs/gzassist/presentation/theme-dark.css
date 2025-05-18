@@ -1,0 +1,97 @@
+@import url("base.css");
+
+/* Root card ----------------------------------------------------------- */
+.theme-dark .root-card,
+.theme-dark.root-card {
+    -fx-background-color: -fx-base-bg;
+    -fx-border-radius: 18;
+    -fx-background-radius: 18;
+    -fx-padding: 34 36 34 36;
+    -fx-font-family: -fx-font-family;
+    -fx-effect: dropshadow(gaussian, rgba(24, 26, 27, 0.7), 24, 0.18, 0, 4);
+}
+
+/* Titles & subtitles -------------------------------------------------- */
+.theme-dark .title,
+.theme-dark.title {
+    -fx-text-fill: -fx-text-color;
+    -fx-font-size: 29px;
+    -fx-font-weight: bold;
+}
+
+.theme-dark .subtitle,
+.theme-dark.subtitle,
+.theme-dark .history-item,
+.theme-dark.history-item {
+    -fx-text-fill: -fx-subtext-color;
+    -fx-font-size: 13px;
+}
+
+/* Main buttons -------------------------------------------------------- */
+.theme-dark .main-btn,
+.theme-dark.main-btn {
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, -fx-base-bg 0%, -fx-base-bg 80%);
+    -fx-text-fill: -fx-text-color;
+    -fx-border-color: derive(-fx-base-bg, 20%);
+    -fx-border-width: 1.2;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(16, 16, 20, 0.8), 4, 0, 0, 1.5);
+}
+
+/* Footer buttons ------------------------------------------------------ */
+.theme-dark .footer-btn,
+.theme-dark.footer-btn {
+    -fx-background-color: derive(-fx-base-bg, -5%);
+    -fx-text-fill: -fx-text-color;
+    -fx-border-color: derive(-fx-base-bg, 15%);
+}
+
+/* SETTINGS TABPANE ---------------------------------------------------- */
+.theme-dark #settingsTabPane,
+.theme-dark#settingsTabPane {
+    -fx-background-color: -fx-base-bg;
+}
+
+.theme-dark #settingsTabPane .tab-header-area,
+.theme-dark#settingsTabPane .tab-header-area,
+.theme-dark #settingsTabPane .tab-content-area,
+.theme-dark#settingsTabPane .tab-content-area {
+    -fx-background-color: -fx-base-bg;
+}
+
+.theme-dark #settingsTabPane .tab-header-area,
+.theme-dark#settingsTabPane .tab-header-area {
+    -fx-border-color: -fx-border-color;
+    -fx-border-width: 0 0 1 0;
+}
+
+.theme-dark #settingsTabPane .tab,
+.theme-dark#settingsTabPane .tab {
+    -fx-background-color: -fx-base-bg;
+    -fx-border-color: transparent;
+}
+
+.theme-dark #settingsTabPane .tab:hover,
+.theme-dark#settingsTabPane .tab:hover {
+    -fx-background-color: derive(-fx-base-bg, 10%);
+}
+
+.theme-dark #settingsTabPane .tab:selected,
+.theme-dark#settingsTabPane .tab:selected {
+    -fx-background-color: derive(-fx-base-bg, 20%);
+    -fx-border-color: -fx-text-color;
+    -fx-border-width: 0 0 2 0;
+}
+
+.theme-dark #settingsTabPane .tab .tab-label,
+.theme-dark#settingsTabPane .tab .tab-label {
+    -fx-text-fill: -fx-subtext-color;
+    -fx-font-size: 13px;
+}
+
+.theme-dark #settingsTabPane .tab:selected .tab-label,
+.theme-dark#settingsTabPane .tab:selected .tab-label {
+    -fx-text-fill: -fx-text-color;
+    -fx-font-weight: bold;
+}

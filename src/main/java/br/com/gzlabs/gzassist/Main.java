@@ -28,6 +28,7 @@ public class Main extends Application {
         scene.getStylesheets().add(
                 Objects.requireNonNull(getClass().getResource("presentation/style.css")).toExternalForm()
         );
+        scene.getRoot().getStyleClass().add("theme-dark");
         stage.setScene(scene);
         stage.setTitle("GZAssist");
         stage.setResizable(false);

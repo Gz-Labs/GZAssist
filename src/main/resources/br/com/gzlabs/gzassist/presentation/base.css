@@ -1,0 +1,59 @@
+/* === THEME TOKENS === */
+.theme-dark {
+    -fx-base-bg: #23232A;
+    -fx-text-color: #ECECF1;
+    -fx-subtext-color: #B3B3BE;
+    -fx-border-color: #37384899;
+    -fx-accent-color: #10A37F;
+    -fx-font-family: "Segoe UI Semibold", "Roboto", Arial, sans-serif;
+}
+
+.theme-light {
+    -fx-base-bg: #FFFFFF;
+    -fx-text-color: #23232A;
+    -fx-subtext-color: #555555;
+    -fx-border-color: #DDDDDD;
+    -fx-accent-color: #007ACC;
+    -fx-font-family: "Segoe UI", "Roboto", Arial, sans-serif;
+}
+
+/* === UTILITY CLASSES === */
+.text-center {
+    -fx-alignment: center;
+}
+
+.text-muted {
+    -fx-text-fill: -fx-subtext-color;
+}
+
+.p-1 {
+    -fx-padding: 8;
+}
+
+.p-2 {
+    -fx-padding: 16;
+}
+
+.p-3 {
+    -fx-padding: 24;
+}
+
+.mt-1 {
+    -fx-padding: 8 0 0 0;
+}
+
+.mb-1 {
+    -fx-padding: 0 0 8 0;
+}
+
+.flex-center {
+    -fx-alignment: center;
+}
+
+.btn {
+    -fx-font-size: 14px;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-padding: 7 22 7 22;
+    -fx-cursor: hand;
+}
