@@ -6,6 +6,7 @@ module br.com.gzlabs.gzassist {
     requires jintellitype;
     requires openai.java.core;
     requires openai.java.client.okhttp;
+    requires java.prefs;
 
     exports br.com.gzlabs.gzassist.core;
     exports br.com.gzlabs.gzassist.presentation;
