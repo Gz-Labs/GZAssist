@@ -117,16 +117,17 @@
     -fx-padding: 7 22 7 22;
     -fx-cursor: hand;
     -fx-effect: dropshadow(gaussian, #101014, 2,0,0,1);
-    -fx-transition: background-color 0.18s, -fx-background-color 0.18s;
+    -fx-transition: background-color 0.18s, -fx-background-color 0.18s, -fx-text-fill 0.15s;
 }
 
 .footer-btn:hover {
-    -fx-background-color: #10A37F;
-    -fx-text-fill: #1b1b22;
-    -fx-border-color: #2ee6a5;
+    -fx-background-color: #373748;
+    -fx-text-fill: #ECECF1;
+    -fx-border-color: #a7a7b3;
 }
 
 .footer-btn:pressed {
-    -fx-background-color: #128e65;
-    -fx-text-fill: #f7f7ff;
+    -fx-background-color: #464658;
+    -fx-text-fill: #ECECF1;
+    -fx-border-color: #ececf188;
 }

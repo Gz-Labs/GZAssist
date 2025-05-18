@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 public class HomeController {
 
     private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
+    private static final String SELECTED_STYLE_CLASS = "selected";
 
     @FXML private Button examQuestionBtn;
     @FXML private Button codeExplainBtn;
@@ -60,10 +61,12 @@ public class HomeController {
     }
 
     private void highlightSelected(Button btn) {
-        if (selectedBtn != null) {
-            selectedBtn.getStyleClass().remove("selected");
+        if (selectedBtn != null && selectedBtn != btn) {
+            selectedBtn.getStyleClass().remove(SELECTED_STYLE_CLASS);
         }
-        btn.getStyleClass().add("selected");
+        if (!btn.getStyleClass().contains(SELECTED_STYLE_CLASS)) {
+            btn.getStyleClass().add(SELECTED_STYLE_CLASS);
+        }
         selectedBtn = btn;
     }
 }
