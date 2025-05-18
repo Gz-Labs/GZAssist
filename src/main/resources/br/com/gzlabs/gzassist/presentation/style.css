@@ -34,8 +34,8 @@
     -fx-border-radius: 12;
     -fx-border-color: #35363e;
     -fx-border-width: 1.2;
-    -fx-alignment: CENTER_LEFT;
-    -fx-padding: 0 0 0 20;
+    -fx-alignment: CENTER;
+    -fx-padding: 0;
     -fx-cursor: hand;
     -fx-effect: dropshadow(gaussian, #101014, 4,0,0,1.5);
     -fx-min-width: 260;
@@ -45,15 +45,28 @@
 }
 
 .main-btn:hover {
-    -fx-background-color: linear-gradient(to bottom, #313144, #292936 80%);
-    -fx-border-color: #10A37F;
+    -fx-background-color: linear-gradient(to bottom, #363646, #23232A 80%);
+    -fx-border-color: #a7a7b3;
     -fx-text-fill: #ECECF1;
+    -fx-effect: dropshadow(gaussian, #23232A, 6, 0.11, 0, 1);
 }
 
 .main-btn:pressed {
-    -fx-background-color: linear-gradient(to bottom, #222229, #18181e 80%);
-    -fx-border-color: #5de5b8;
-    -fx-text-fill: #b3ffe7;
+    -fx-background-color: linear-gradient(to bottom, #484857, #31313a 80%);
+    -fx-border-color: #ECECF1;
+    -fx-text-fill: #ECECF1;
+    -fx-effect: dropshadow(gaussian, #32323a, 6, 0.12, 0, 1);
+}
+
+.main-btn.selected {
+    -fx-background-color: linear-gradient(to bottom, #fafaff, #f1f1f6 80%);
+    -fx-text-fill: #23232A;
+    -fx-border-color: #ECECF1;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, #bbbbd1, 8, 0.19, 0, 2);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.08;
+    -fx-translate-y: -2;
 }
 
 .separator {

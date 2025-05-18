@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <VBox alignment="CENTER" spacing="18.0" styleClass="root-card" stylesheets="@style.css"
-      xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      xmlns:fx="http://javafx.com/fxml"
       fx:controller="br.com.gzlabs.gzassist.presentation.HomeController">
 
     <!-- Title -->
@@ -15,31 +15,41 @@
 
     <!-- Main Buttons -->
     <VBox alignment="CENTER" spacing="10" styleClass="main-buttons-vbox">
-        <Button onAction="#onExamQuestionClick"
+        <Button
+                fx:id="examQuestionBtn"
+                onAction="#onExamQuestionClick"
                 prefHeight="44.0" prefWidth="300.0"
                 styleClass="main-btn"
                 text="❓ Capture &amp; Solve Question"
                 textAlignment="CENTER"/>
 
-        <Button onAction="#onCodeExplainClick"
+        <Button
+                fx:id="codeExplainBtn"
+                onAction="#onCodeExplainClick"
                 prefHeight="44.0" prefWidth="300.0"
                 styleClass="main-btn"
                 text="💻 Capture &amp; Explain Code"
                 textAlignment="CENTER"/>
 
-        <Button onAction="#onSummarizeClick"
+        <Button
+                fx:id="summarizeBtn"
+                onAction="#onSummarizeClick"
                 prefHeight="44.0" prefWidth="300.0"
                 styleClass="main-btn"
                 text="📝 Capture &amp; Summarize Text"
                 textAlignment="CENTER"/>
 
-        <Button onAction="#onTranslateClick"
+        <Button
+                fx:id="translateBtn"
+                onAction="#onTranslateClick"
                 prefHeight="44.0" prefWidth="300.0"
                 styleClass="main-btn"
                 text="🌐 Capture &amp; Translate"
                 textAlignment="CENTER"/>
 
-        <Button onAction="#onAutoDetectClick"
+        <Button
+                fx:id="autoDetectBtn"
+                onAction="#onAutoDetectClick"
                 prefHeight="44.0" prefWidth="300.0"
                 styleClass="main-btn"
                 text="❔ AutoDetect (AI decides)"
