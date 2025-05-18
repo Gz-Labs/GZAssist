@@ -17,12 +17,7 @@
         <Label text="Settings" styleClass="title"/>
 
         <TabPane id="settingsTabPane"
-                 tabClosingPolicy="UNAVAILABLE"
-
-
-        >
-
-
+                 tabClosingPolicy="UNAVAILABLE">
             <!-- GENERAL -->
             <Tab text="General">
                 <VBox spacing="16">
