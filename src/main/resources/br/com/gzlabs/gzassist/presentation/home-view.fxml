@@ -1,16 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+<VBox alignment="CENTER" spacing="18.0" styleClass="root-card" stylesheets="@style.css"
+      xmlns:fx="http://javafx.com/fxml"
       fx:controller="br.com.gzlabs.gzassist.presentation.HomeController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+    <!-- Title -->
+    <Label styleClass="title" text="GZAssist"/>
+
+    <!-- Subtitle -->
+    <Label styleClass="subtitle" text="What do you want to do?"/>
+
+    <!-- Main Buttons -->
+    <VBox alignment="CENTER" spacing="10" styleClass="main-buttons-vbox">
+        <Button
+                fx:id="examQuestionBtn"
+                onAction="#onExamQuestionClick"
+                prefHeight="44.0" prefWidth="300.0"
+                styleClass="main-btn"
+                text="❓ Capture &amp; Solve Question"
+                textAlignment="CENTER"/>
+
+        <Button
+                fx:id="codeExplainBtn"
+                onAction="#onCodeExplainClick"
+                prefHeight="44.0" prefWidth="300.0"
+                styleClass="main-btn"
+                text="💻 Capture &amp; Explain Code"
+                textAlignment="CENTER"/>
+
+        <Button
+                fx:id="summarizeBtn"
+                onAction="#onSummarizeClick"
+                prefHeight="44.0" prefWidth="300.0"
+                styleClass="main-btn"
+                text="📝 Capture &amp; Summarize Text"
+                textAlignment="CENTER"/>
+
+        <Button
+                fx:id="translateBtn"
+                onAction="#onTranslateClick"
+                prefHeight="44.0" prefWidth="300.0"
+                styleClass="main-btn"
+                text="🌐 Capture &amp; Translate"
+                textAlignment="CENTER"/>
+
+        <Button
+                fx:id="autoDetectBtn"
+                onAction="#onAutoDetectClick"
+                prefHeight="44.0" prefWidth="300.0"
+                styleClass="main-btn"
+                text="❔ AutoDetect (AI decides)"
+                textAlignment="CENTER"/>
+    </VBox>
+
+
+    <!-- Separator -->
+    <Separator styleClass="separator"/>
+
+    <!-- Recent History -->
+    <VBox spacing="3" styleClass="history-vbox">
+        <Label styleClass="history-title" text="Recent history:"/>
+        <Label styleClass="history-item" text="• AI Answer: “Answer: C…”"/>
+        <Label styleClass="history-item" text="• Fixed code: “Missing closing parenthesis”"/>
+    </VBox>
+
+    <!-- Footer Buttons -->
+    <HBox alignment="CENTER" spacing="18" styleClass="footer-hbox">
+        <Button onAction="#onSettingsClick" styleClass="footer-btn" text="⚙ Settings"/>
+        <Button onAction="#onExitClick" styleClass="footer-btn" text="⏻ Exit"/>
+    </HBox>
+
 </VBox>
