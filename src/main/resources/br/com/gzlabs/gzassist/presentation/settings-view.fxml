@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox spacing="12" alignment="CENTER" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="br.com.gzlabs.gzassist.presentation.SettingsController"
+      styleClass="root-card" stylesheets="@style.css">
+
+    <Label text="Configurações" styleClass="title"/>
+
+    <HBox spacing="8" alignment="CENTER_LEFT">
+        <Label text="API Key:"/>
+        <TextField fx:id="apiKeyField" HBox.hgrow="ALWAYS" promptText="sua-chave-aqui"/>
+    </HBox>
+
+    <HBox spacing="8" alignment="CENTER_LEFT">
+        <Label text="Hotkey:"/>
+        <TextField fx:id="hotkeyField" prefWidth="200" promptText="CTRL+ALT+K"/>
+    </HBox>
+
+    <HBox spacing="8" alignment="CENTER_LEFT">
+        <Label text="Overlay Timeout (s):"/>
+        <Spinner fx:id="timeoutSpinner" prefWidth="80"/>
+    </HBox>
+
+    <HBox spacing="20" alignment="CENTER">
+        <Button text="Salvar" onAction="#onSaveClick"/>
+        <Button text="Cancelar" onAction="#onCancelClick"/>
+    </HBox>
+</VBox>

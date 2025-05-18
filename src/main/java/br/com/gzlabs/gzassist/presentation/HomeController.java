@@ -3,7 +3,12 @@ package br.com.gzlabs.gzassist.presentation;
 import br.com.gzlabs.gzassist.core.Mode;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,8 +63,20 @@ public class HomeController {
 
     @FXML
     protected void onSettingsClick() {
-        LOG.info("Settings button clicked");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("settings-view.fxml"));
+            Parent root = loader.load();
+            Stage dialog = new Stage();
+            dialog.initOwner(examQuestionBtn.getScene().getWindow());
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.setScene(new Scene(root));
+            dialog.setTitle("Configurações");
+            dialog.showAndWait();
+        } catch (Exception e) {
+            LOG.error("Não foi possível abrir configurações", e);
+        }
     }
+
 
     @FXML
     protected void onExitClick() {
