@@ -4,17 +4,16 @@ import br.com.gzlabs.gzassist.application.AnswerService;
 import br.com.gzlabs.gzassist.application.AppFactory;
 import br.com.gzlabs.gzassist.presentation.HomeController;
 import br.com.gzlabs.gzassist.presentation.OverlayController;
+import br.com.gzlabs.gzassist.util.ThemeManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import static javafx.scene.paint.Color.web;
 
 public class Main extends Application {
 
@@ -24,10 +23,9 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("presentation/home-view.fxml"));
-        Scene scene = new Scene(loader.load(), 430, 680, web("#181a1b"));
-        scene.getStylesheets().add(
-                Objects.requireNonNull(getClass().getResource("presentation/style.css")).toExternalForm()
-        );
+        Parent root = loader.load();
+        Scene scene = new Scene(root, 430, 680);
+        ThemeManager.applyDark(scene, root);
         stage.setScene(scene);
         stage.setTitle("GZAssist");
         stage.setResizable(false);
