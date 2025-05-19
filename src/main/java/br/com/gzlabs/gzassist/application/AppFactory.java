@@ -3,10 +3,12 @@ package br.com.gzlabs.gzassist.application;
 import br.com.gzlabs.gzassist.adapters.GlobalHotkeyBinder;
 import br.com.gzlabs.gzassist.adapters.OpenAiAnswerProvider;
 import br.com.gzlabs.gzassist.adapters.RobotScreenCapturer;
+import br.com.gzlabs.gzassist.config.AppConfig;
 import br.com.gzlabs.gzassist.core.Mode;
 import br.com.gzlabs.gzassist.errors.HotkeyException;
 import br.com.gzlabs.gzassist.presentation.UiEvent;
 import br.com.gzlabs.gzassist.util.PromptTemplates;
+import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 
 import java.awt.*;
@@ -16,13 +18,16 @@ import java.util.function.Supplier;
 
 public class AppFactory {
 
-    private AppFactory() {}
+    private AppFactory() {
+    }
 
     public static AnswerService createAnswerService(Consumer<UiEvent> uiHandler, ExecutorService executor, Supplier<Mode> modeSupplier) throws AWTException, HotkeyException {
+        String apiKey = AppConfig.getApiKey();
+        OpenAIClient client = OpenAIOkHttpClient.builder().apiKey(apiKey).build();
         return new AnswerService(
                 new RobotScreenCapturer(),
                 new OpenAiAnswerProvider(
-                        OpenAIOkHttpClient.fromEnv(),
+                        client.chat().completions(),
                         new PromptTemplates()
                 ),
                 new GlobalHotkeyBinder(),
