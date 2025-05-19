@@ -1,6 +1,6 @@
 @import url("base.css");
 
-/* Root card ----------------------------------------------------------- */
+/* Root card */
 .theme-dark .root-card,
 .theme-dark.root-card {
     -fx-background-color: -fx-base-bg;
@@ -11,7 +11,7 @@
     -fx-effect: dropshadow(gaussian, rgba(24, 26, 27, 0.7), 24, 0.18, 0, 4);
 }
 
-/* Titles & subtitles -------------------------------------------------- */
+/* Titles & subtitles */
 .theme-dark .title,
 .theme-dark.title {
     -fx-text-fill: -fx-text-color;
@@ -27,7 +27,7 @@
     -fx-font-size: 13px;
 }
 
-/* Main buttons -------------------------------------------------------- */
+/* Main buttons */
 .theme-dark .main-btn,
 .theme-dark.main-btn {
     -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, -fx-base-bg 0%, -fx-base-bg 80%);
@@ -39,7 +39,7 @@
     -fx-effect: dropshadow(gaussian, rgba(16, 16, 20, 0.8), 4, 0, 0, 1.5);
 }
 
-/* Footer buttons ------------------------------------------------------ */
+/* Footer buttons */
 .theme-dark .footer-btn,
 .theme-dark.footer-btn {
     -fx-background-color: derive(-fx-base-bg, -5%);
@@ -47,7 +47,7 @@
     -fx-border-color: derive(-fx-base-bg, 15%);
 }
 
-/* SETTINGS TABPANE ---------------------------------------------------- */
+/* SETTINGS TABPANE */
 .theme-dark #settingsTabPane,
 .theme-dark#settingsTabPane {
     -fx-background-color: -fx-base-bg;
@@ -62,7 +62,7 @@
 
 .theme-dark #settingsTabPane .tab-header-area,
 .theme-dark#settingsTabPane .tab-header-area {
-    -fx-border-color: -fx-border-color;
+    -fx-border-color: #37384899; /* <- CORRIGIDO */
     -fx-border-width: 0 0 1 0;
 }
 

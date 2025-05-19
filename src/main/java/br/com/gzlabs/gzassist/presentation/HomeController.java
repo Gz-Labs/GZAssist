@@ -1,6 +1,7 @@
 package br.com.gzlabs.gzassist.presentation;
 
 import br.com.gzlabs.gzassist.core.Mode;
+import br.com.gzlabs.gzassist.util.ThemeManager;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.util.Objects;
 
 public class HomeController {
 
@@ -67,24 +71,22 @@ public class HomeController {
     }
 
     @FXML
-    protected void onSettingsClick() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("settings-view.fxml"));
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setMinWidth(650);
-            stage.setMinHeight(450);
-            stage.initOwner(examQuestionBtn.getScene().getWindow());
-            stage.initModality(Modality.APPLICATION_MODAL);
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle("Settings");
+    protected void onSettingsClick() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("settings-view.fxml"));
+        Parent root = loader.load();
 
-            stage.showAndWait();
-        } catch (Exception e) {
-            LOG.error("Não foi possível abrir configurações", e);
-        }
+        Scene scene = new Scene(root, 650, 450);
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("settings.css")).toExternalForm());
+        ThemeManager.applyDark(scene, root);
+
+        Stage stage = new Stage();
+        stage.setTitle("Settings");
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(examQuestionBtn.getScene().getWindow());
+        stage.showAndWait();
     }
+
 
     @FXML
     protected void onExitClick() {

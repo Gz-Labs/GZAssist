@@ -52,7 +52,7 @@
 
 .theme-light #settingsTabPane .tab-header-area,
 .theme-light#settingsTabPane .tab-header-area {
-    -fx-border-color: -fx-border-color;
+    -fx-border-color: #DDDDDD; /* ← Corrigido aqui */
     -fx-border-width: 0 0 1 0;
 }
 
