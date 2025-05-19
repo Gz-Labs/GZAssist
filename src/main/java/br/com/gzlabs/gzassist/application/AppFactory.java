@@ -10,6 +10,7 @@ import br.com.gzlabs.gzassist.presentation.UiEvent;
 import br.com.gzlabs.gzassist.util.PromptTemplates;
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.services.blocking.chat.ChatCompletionService;
 
 import java.awt.*;
 import java.util.concurrent.ExecutorService;
@@ -21,15 +22,21 @@ public class AppFactory {
     private AppFactory() {
     }
 
-    public static AnswerService createAnswerService(Consumer<UiEvent> uiHandler, ExecutorService executor, Supplier<Mode> modeSupplier) throws AWTException, HotkeyException {
-        String apiKey = AppConfig.getApiKey();
-        OpenAIClient client = OpenAIOkHttpClient.builder().apiKey(apiKey).build();
+    public static AnswerService createAnswerService(Consumer<UiEvent> uiHandler,
+                                                    ExecutorService executor,
+                                                    Supplier<Mode> modeSupplier)
+            throws AWTException, HotkeyException {
+        Supplier<ChatCompletionService> chatSupplier = () -> {
+            String apiKey = AppConfig.getApiKey();
+            OpenAIClient client = OpenAIOkHttpClient.builder()
+                    .apiKey(apiKey)
+                    .build();
+            return client.chat().completions();
+        };
+
         return new AnswerService(
                 new RobotScreenCapturer(),
-                new OpenAiAnswerProvider(
-                        client.chat().completions(),
-                        new PromptTemplates()
-                ),
+                new OpenAiAnswerProvider(chatSupplier, new PromptTemplates()),
                 new GlobalHotkeyBinder(),
                 executor,
                 uiHandler,

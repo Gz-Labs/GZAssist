@@ -10,14 +10,15 @@ import com.openai.services.blocking.chat.ChatCompletionService;
 
 import java.awt.image.BufferedImage;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 public final class OpenAiAnswerProvider implements AnswerProvider {
 
-    private final ChatCompletionService chat;
+    private final Supplier<ChatCompletionService> chatSupplier;
     private final PromptTemplates templates;
 
-    public OpenAiAnswerProvider(ChatCompletionService chat, PromptTemplates templates) {
-        this.chat = chat;
+    public OpenAiAnswerProvider(Supplier<ChatCompletionService> chatSupplier, PromptTemplates templates) {
+        this.chatSupplier = chatSupplier;
         this.templates = templates;
     }
 
@@ -32,10 +33,13 @@ public final class OpenAiAnswerProvider implements AnswerProvider {
                 case TRANSLATE -> templates.forTranslate(dataUrl);
                 case AUTO_DETECT -> templates.forAutoDetect(dataUrl);
             };
+
+            ChatCompletionService chat = chatSupplier.get(); // ← chama o mais recente
             return chat.create(params)
                     .choices().stream()
                     .findFirst()
                     .flatMap(choice -> choice.message().content().stream().findFirst());
+
         } catch (Exception e) {
             throw new AiException("Erro ao obter resposta da IA", e);
         }
