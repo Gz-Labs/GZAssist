@@ -11,11 +11,20 @@ public class ThemeManager {
     }
 
     public static void applyDark(Scene scene, Parent root) {
+        apply(scene, root, "theme-dark.css", "theme-dark");
+    }
+
+    public static void applyLight(Scene scene, Parent root) {
+        apply(scene, root, "theme-light.css", "theme-light");
+    }
+
+    private static void apply(Scene scene, Parent root, String themeFile, String themeClass) {
+        scene.getStylesheets().clear();
         scene.getStylesheets().addAll(
                 Objects.requireNonNull(ThemeManager.class.getResource("/br/com/gzlabs/gzassist/presentation/style.css")).toExternalForm(),
-                Objects.requireNonNull(ThemeManager.class.getResource("/br/com/gzlabs/gzassist/presentation/theme-dark.css")).toExternalForm()
+                Objects.requireNonNull(ThemeManager.class.getResource("/br/com/gzlabs/gzassist/presentation/" + themeFile)).toExternalForm()
         );
-        root.getStyleClass().add("theme-dark");
+        root.getStyleClass().removeAll("theme-dark", "theme-light");
+        root.getStyleClass().add(themeClass);
     }
 }
-
