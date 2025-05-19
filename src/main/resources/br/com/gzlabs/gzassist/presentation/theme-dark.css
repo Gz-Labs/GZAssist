@@ -57,50 +57,41 @@
     -fx-border-color: transparent;
 }
 
-.theme-dark #settingsTabPane,
-.theme-dark#settingsTabPane {
+.theme-dark #settingsTabPane {
     -fx-background-color: -fx-base-bg;
 }
 
 .theme-dark #settingsTabPane .tab-header-area,
-.theme-dark#settingsTabPane .tab-header-area,
-.theme-dark #settingsTabPane .tab-content-area,
-.theme-dark#settingsTabPane .tab-content-area {
+.theme-dark #settingsTabPane .tab-content-area {
     -fx-background-color: -fx-base-bg;
 }
 
-.theme-dark #settingsTabPane .tab-header-area,
-.theme-dark#settingsTabPane .tab-header-area {
+.theme-dark #settingsTabPane .tab-header-area {
     -fx-border-color: #37384899;
     -fx-border-width: 0 0 1 0;
 }
 
-.theme-dark #settingsTabPane .tab,
-.theme-dark#settingsTabPane .tab {
+.theme-dark #settingsTabPane .tab {
     -fx-background-color: -fx-base-bg;
     -fx-border-color: transparent;
 }
 
-.theme-dark #settingsTabPane .tab:hover,
-.theme-dark#settingsTabPane .tab:hover {
+.theme-dark #settingsTabPane .tab:hover {
     -fx-background-color: derive(-fx-base-bg, 10%);
 }
 
-.theme-dark #settingsTabPane .tab:selected,
-.theme-dark#settingsTabPane .tab:selected {
+.theme-dark #settingsTabPane .tab:selected {
     -fx-background-color: derive(-fx-base-bg, 20%);
     -fx-border-color: -fx-text-color;
     -fx-border-width: 0 0 2 0;
 }
 
-.theme-dark #settingsTabPane .tab .tab-label,
-.theme-dark#settingsTabPane .tab .tab-label {
+.theme-dark #settingsTabPane .tab .tab-label {
     -fx-text-fill: -fx-subtext-color;
     -fx-font-size: 13px;
 }
 
-.theme-dark #settingsTabPane .tab:selected .tab-label,
-.theme-dark#settingsTabPane .tab:selected .tab-label {
+.theme-dark #settingsTabPane .tab:selected .tab-label {
     -fx-text-fill: -fx-text-color;
     -fx-font-weight: bold;
 }
