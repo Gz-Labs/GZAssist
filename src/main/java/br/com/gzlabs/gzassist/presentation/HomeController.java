@@ -71,22 +71,25 @@ public class HomeController {
     }
 
     @FXML
-    protected void onSettingsClick() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("settings-view.fxml"));
-        Parent root = loader.load();
+    protected void onSettingsClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("settings-view.fxml"));
+            Parent root = loader.load();
 
-        Scene scene = new Scene(root, 650, 450);
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("settings.css")).toExternalForm());
-        ThemeManager.applyDark(scene, root);
+            Scene scene = new Scene(root, 650, 450);
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("settings.css")).toExternalForm());
+            ThemeManager.applyDark(scene, root);
 
-        Stage stage = new Stage();
-        stage.setTitle("Settings");
-        stage.setScene(scene);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(examQuestionBtn.getScene().getWindow());
-        stage.showAndWait();
+            Stage stage = new Stage();
+            stage.setTitle("Settings");
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(examQuestionBtn.getScene().getWindow());
+            stage.showAndWait();
+        } catch (IOException e) {
+            LOG.error("Failed to open the settings view.", e);
+        }
     }
-
 
     @FXML
     protected void onExitClick() {
