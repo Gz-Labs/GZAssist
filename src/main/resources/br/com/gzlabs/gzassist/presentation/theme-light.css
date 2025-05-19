@@ -8,17 +8,23 @@
     -fx-background-radius: 18;
     -fx-padding: 34 36 34 36;
     -fx-font-family: -fx-font-family;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 8, 0, 0, 2);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.10), 24, 0.18, 0, 4);
 }
 
 /* Titles & subtitles -------------------------------------------------- */
 .theme-light .title,
-.theme-light.title,
+.theme-light.title {
+    -fx-text-fill: -fx-text-color;
+    -fx-font-size: 29px;
+    -fx-font-weight: bold;
+}
+
 .theme-light .subtitle,
 .theme-light.subtitle,
 .theme-light .history-item,
 .theme-light.history-item {
-    -fx-text-fill: -fx-text-color;
+    -fx-text-fill: -fx-subtext-color;
+    -fx-font-size: 13px;
 }
 
 /* Main buttons -------------------------------------------------------- */
@@ -26,60 +32,63 @@
 .theme-light.main-btn {
     -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, -fx-base-bg 0%, -fx-base-bg 80%);
     -fx-text-fill: -fx-text-color;
-    -fx-border-color: derive(-fx-border-color, -10%);
+    -fx-border-color: derive(-fx-base-bg, -20%);
+    -fx-border-width: 1.2;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 4, 0, 0, 1.5);
 }
 
 /* Footer buttons ------------------------------------------------------ */
 .theme-light .footer-btn,
 .theme-light.footer-btn {
-    -fx-background-color: derive(-fx-base-bg, -10%);
+    -fx-background-color: derive(-fx-base-bg, -5%);
     -fx-text-fill: -fx-text-color;
-    -fx-border-color: derive(-fx-border-color, -20%);
+    -fx-border-color: derive(-fx-base-bg, -20%);
 }
 
 /* SETTINGS TABPANE ---------------------------------------------------- */
 .theme-light #settingsTabPane,
-.theme-light#settingsTabPane {
+.theme-light #settingsTabPane .tab-header-background {
     -fx-background-color: -fx-base-bg;
+    -fx-opacity: 1;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-color: transparent;
 }
 
 .theme-light #settingsTabPane .tab-header-area,
-.theme-light#settingsTabPane .tab-header-area,
-.theme-light #settingsTabPane .tab-content-area,
-.theme-light#settingsTabPane .tab-content-area {
+.theme-light #settingsTabPane .tab-content-area {
     -fx-background-color: -fx-base-bg;
 }
 
-.theme-light #settingsTabPane .tab-header-area,
-.theme-light#settingsTabPane .tab-header-area {
-    -fx-border-color: #DDDDDD; /* ← Corrigido aqui */
+.theme-light #settingsTabPane .tab-header-area {
+    -fx-border-color: #DDDDDD;
     -fx-border-width: 0 0 1 0;
 }
 
 .theme-light #settingsTabPane .tab,
-.theme-light#settingsTabPane .tab {
+.theme-light #settingsTabPane .tab {
     -fx-background-color: -fx-base-bg;
+    -fx-border-color: transparent;
 }
 
-.theme-light #settingsTabPane .tab:hover,
-.theme-light#settingsTabPane .tab:hover {
-    -fx-background-color: derive(-fx-base-bg, -5%);
+.theme-light #settingsTabPane .tab:hover {
+    -fx-background-color: derive(-fx-base-bg, -3%);
 }
 
-.theme-light #settingsTabPane .tab:selected,
-.theme-light#settingsTabPane .tab:selected {
-    -fx-background-color: derive(-fx-base-bg, -15%);
+.theme-light #settingsTabPane .tab:selected {
+    -fx-background-color: derive(-fx-base-bg, -6%);
     -fx-border-color: -fx-text-color;
     -fx-border-width: 0 0 2 0;
 }
 
-.theme-light #settingsTabPane .tab .tab-label,
-.theme-light#settingsTabPane .tab .tab-label {
+.theme-light #settingsTabPane .tab .tab-label {
     -fx-text-fill: -fx-subtext-color;
+    -fx-font-size: 13px;
 }
 
-.theme-light #settingsTabPane .tab:selected .tab-label,
-.theme-light#settingsTabPane .tab:selected .tab-label {
+.theme-light #settingsTabPane .tab:selected .tab-label {
     -fx-text-fill: -fx-text-color;
     -fx-font-weight: bold;
 }
