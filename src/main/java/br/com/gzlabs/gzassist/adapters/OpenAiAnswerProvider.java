@@ -5,19 +5,20 @@ import br.com.gzlabs.gzassist.core.Mode;
 import br.com.gzlabs.gzassist.errors.AiException;
 import br.com.gzlabs.gzassist.util.ImageUtils;
 import br.com.gzlabs.gzassist.util.PromptTemplates;
-import com.openai.client.OpenAIClient;
 import com.openai.models.chat.completions.ChatCompletionCreateParams;
+import com.openai.services.blocking.chat.ChatCompletionService;
 
 import java.awt.image.BufferedImage;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 public final class OpenAiAnswerProvider implements AnswerProvider {
 
-    private final OpenAIClient client;
+    private final Supplier<ChatCompletionService> chatSupplier;
     private final PromptTemplates templates;
 
-    public OpenAiAnswerProvider(OpenAIClient client, PromptTemplates templates) {
-        this.client = client;
+    public OpenAiAnswerProvider(Supplier<ChatCompletionService> chatSupplier, PromptTemplates templates) {
+        this.chatSupplier = chatSupplier;
         this.templates = templates;
     }
 
@@ -32,10 +33,13 @@ public final class OpenAiAnswerProvider implements AnswerProvider {
                 case TRANSLATE -> templates.forTranslate(dataUrl);
                 case AUTO_DETECT -> templates.forAutoDetect(dataUrl);
             };
-            return client.chat().completions().create(params)
+
+            ChatCompletionService chat = chatSupplier.get(); // ← chama o mais recente
+            return chat.create(params)
                     .choices().stream()
                     .findFirst()
                     .flatMap(choice -> choice.message().content().stream().findFirst());
+
         } catch (Exception e) {
             throw new AiException("Erro ao obter resposta da IA", e);
         }
