@@ -49,6 +49,15 @@
 
 /* SETTINGS TABPANE */
 .theme-dark #settingsTabPane,
+.theme-dark #settingsTabPane .tab-header-background {
+    -fx-background-color: -fx-base-bg;
+    -fx-opacity: 1;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-color: transparent;
+}
+
+.theme-dark #settingsTabPane,
 .theme-dark#settingsTabPane {
     -fx-background-color: -fx-base-bg;
 }
@@ -62,7 +71,7 @@
 
 .theme-dark #settingsTabPane .tab-header-area,
 .theme-dark#settingsTabPane .tab-header-area {
-    -fx-border-color: #37384899; /* <- CORRIGIDO */
+    -fx-border-color: #37384899;
     -fx-border-width: 0 0 1 0;
 }
 
