@@ -39,11 +39,5 @@
             <Label styleClass="history-item" text="• AI Answer: “Answer: C…”"/>
             <Label styleClass="history-item" text="• Fixed code: “Missing closing parenthesis”"/>
         </VBox>
-
-        <!-- Footer Buttons -->
-        <HBox alignment="CENTER" spacing="16" styleClass="footer-hbox">
-            <Button onAction="#onSettingsClick" styleClass="footer-btn" text="⚙ Settings"/>
-            <Button onAction="#onExitClick" styleClass="footer-btn" text="⏻ Exit"/>
-        </HBox>
     </VBox>
 </AnchorPane>

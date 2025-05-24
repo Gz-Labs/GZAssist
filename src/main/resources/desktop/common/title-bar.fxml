@@ -8,6 +8,7 @@
       stylesheets="@title-bar.css"
       spacing="8" alignment="TOP_RIGHT" styleClass="window-controls">
 
+    <Button fx:id="settingsButton" text="⚙" onAction="#onSettingsClick" styleClass="window-button"/>
     <Button fx:id="minimizeButton" text="—" onAction="#onMinimize" styleClass="window-button"/>
     <Button fx:id="closeButton" text="×" onAction="#onClose" styleClass="window-button"/>
 </HBox>

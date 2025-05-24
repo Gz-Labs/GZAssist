@@ -39,14 +39,6 @@
     -fx-effect: dropshadow(gaussian, rgba(16, 16, 20, 0.8), 4, 0, 0, 1.5);
 }
 
-/* Footer buttons */
-.theme-dark .footer-btn,
-.theme-dark.footer-btn {
-    -fx-background-color: derive(-fx-base-bg, -5%);
-    -fx-text-fill: -fx-text-color;
-    -fx-border-color: derive(-fx-base-bg, 15%);
-}
-
 /* SETTINGS TABPANE */
 .theme-dark #settingsTabPane,
 .theme-dark #settingsTabPane .tab-header-background {
