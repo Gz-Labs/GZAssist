@@ -3,9 +3,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<VBox alignment="CENTER" spacing="18.0" styleClass="root-card"
+<VBox alignment="CENTER" styleClass="root-card"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="br.com.gzlabs.gzassist.desktop.HomeController">
+
+    <fx:include source="../common/title-bar.fxml"/>
 
     <!-- Title -->
     <Label styleClass="title" text="GZAssist"/>

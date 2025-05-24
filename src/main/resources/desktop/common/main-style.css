@@ -3,7 +3,7 @@
 .root-card {
     -fx-border-radius: 18;
     -fx-background-radius: 18;
-    -fx-padding: 34 36 34 36;
+    -fx-padding: 0 24 24 24;
 }
 
 .title {

@@ -30,7 +30,7 @@ public class Main extends Application {
         stage.setTitle("GZAssist");
         stage.setResizable(false);
         stage.setMaximized(false);
-        stage.initStyle(StageStyle.DECORATED);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
 
         FXMLLoader overlayLoader = new FXMLLoader(Main.class.getResource("/desktop/overlay/overlay-view.fxml"));
