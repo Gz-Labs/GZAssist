@@ -78,7 +78,7 @@ public class HomeController {
 
             Scene scene = new Scene(root, 650, 450);
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/desktop/settings/settings.css")).toExternalForm());
-            ThemeManager.applyDark(scene, root);
+            ThemeManager.applyTheme(scene, root);
 
             Stage stage = new Stage();
             stage.setTitle("Settings");

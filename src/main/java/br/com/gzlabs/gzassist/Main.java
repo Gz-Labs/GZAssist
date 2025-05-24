@@ -25,7 +25,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("/desktop/home/home-view.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root, 430, 680);
-        ThemeManager.applyDark(scene, root);
+        ThemeManager.applyTheme(scene, root);
         stage.setScene(scene);
         stage.setTitle("GZAssist");
         stage.setResizable(false);
