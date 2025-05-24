@@ -3,11 +3,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.layout.StackPane?>
-
 <StackPane fx:id="rootPane"
            xmlns="http://javafx.com/javafx"
            xmlns:fx="http://javafx.com/fxml"
-           fx:controller="br.com.gzlabs.gzassist.presentation.OverlayController"
+           fx:controller="br.com.gzlabs.gzassist.desktop.OverlayController"
            stylesheets="@overlay.css"
            styleClass="overlay-root">
 

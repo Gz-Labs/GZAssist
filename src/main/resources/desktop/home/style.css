@@ -1,4 +1,4 @@
-@import url("base.css");
+@import url("../theme/base.css");
 
 .root-card {
     -fx-border-radius: 18;

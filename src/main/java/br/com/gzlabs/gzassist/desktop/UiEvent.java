@@ -1,8 +1,8 @@
-package br.com.gzlabs.gzassist.presentation;
+package br.com.gzlabs.gzassist.desktop;
 
 public final class UiEvent {
 
-    public enum Type { LOADING, SUCCESS, ERROR }
+    public enum Type {LOADING, SUCCESS, ERROR}
 
     private final Type type;
     private final String message;

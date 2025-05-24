@@ -2,8 +2,8 @@ package br.com.gzlabs.gzassist;
 
 import br.com.gzlabs.gzassist.application.AnswerService;
 import br.com.gzlabs.gzassist.application.AppFactory;
-import br.com.gzlabs.gzassist.presentation.HomeController;
-import br.com.gzlabs.gzassist.presentation.OverlayController;
+import br.com.gzlabs.gzassist.desktop.HomeController;
+import br.com.gzlabs.gzassist.desktop.OverlayController;
 import br.com.gzlabs.gzassist.util.ThemeManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +22,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("presentation/home-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("/desktop/home/home-view.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root, 430, 680);
         ThemeManager.applyDark(scene, root);
@@ -33,7 +33,7 @@ public class Main extends Application {
         stage.initStyle(StageStyle.DECORATED);
         stage.show();
 
-        FXMLLoader overlayLoader = new FXMLLoader(Main.class.getResource("presentation/overlay-view.fxml"));
+        FXMLLoader overlayLoader = new FXMLLoader(Main.class.getResource("/desktop/overlay/overlay-view.fxml"));
         overlayLoader.load();
         OverlayController overlay = overlayLoader.getController();
         overlay.init(stage);

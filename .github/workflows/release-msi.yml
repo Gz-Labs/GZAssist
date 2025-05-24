@@ -31,7 +31,7 @@ jobs:
             --input target `
             --main-jar GZAssist.jar `
             --main-class br.com.gzlabs.gzassist.Main `
-            --icon src\main\resources\br\com\gzlabs\gzassist\presentation\favicon.ico `
+            --icon src\main\resources\desktop\favicon.ico `
             --dest target\dist `
             --win-shortcut `
             --win-menu `
