@@ -1,6 +1,8 @@
-package br.com.gzlabs.gzassist.presentation;
+package br.com.gzlabs.gzassist.desktop;
 
-import javafx.animation.*;
+import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -13,9 +15,12 @@ import javafx.util.Duration;
 
 public final class OverlayController {
 
-    @FXML private StackPane rootPane;
-    @FXML private ProgressIndicator spinner;
-    @FXML private Label messageLabel;
+    @FXML
+    private StackPane rootPane;
+    @FXML
+    private ProgressIndicator spinner;
+    @FXML
+    private Label messageLabel;
 
     private Popup popup;
     private Window ownerWindow;

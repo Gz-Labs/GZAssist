@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<VBox alignment="CENTER" spacing="18.0" styleClass="root-card" stylesheets="@style.css"
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox alignment="CENTER" spacing="18.0" styleClass="root-card"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="br.com.gzlabs.gzassist.presentation.HomeController">
+      fx:controller="br.com.gzlabs.gzassist.desktop.HomeController">
 
     <!-- Title -->
     <Label styleClass="title" text="GZAssist"/>

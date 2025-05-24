@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <StackPane xmlns:fx="http://javafx.com/fxml"
-           fx:controller="br.com.gzlabs.gzassist.presentation.SettingsController"
+           fx:controller="br.com.gzlabs.gzassist.desktop.SettingsController"
            stylesheets="@settings.css"
            styleClass="root-card">
 

@@ -1,4 +1,4 @@
-package br.com.gzlabs.gzassist.presentation;
+package br.com.gzlabs.gzassist.desktop;
 
 import br.com.gzlabs.gzassist.core.Mode;
 import br.com.gzlabs.gzassist.util.ThemeManager;
@@ -73,12 +73,12 @@ public class HomeController {
     @FXML
     protected void onSettingsClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("settings-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/desktop/settings/settings-view.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root, 650, 450);
-            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("settings.css")).toExternalForm());
-            ThemeManager.applyDark(scene, root);
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/desktop/settings/settings.css")).toExternalForm());
+            ThemeManager.applyTheme(scene, root);
 
             Stage stage = new Stage();
             stage.setTitle("Settings");

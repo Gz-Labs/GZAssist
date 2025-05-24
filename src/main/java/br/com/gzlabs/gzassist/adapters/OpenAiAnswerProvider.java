@@ -34,7 +34,7 @@ public final class OpenAiAnswerProvider implements AnswerProvider {
                 case AUTO_DETECT -> templates.forAutoDetect(dataUrl);
             };
 
-            ChatCompletionService chat = chatSupplier.get(); // ← chama o mais recente
+            ChatCompletionService chat = chatSupplier.get();
             return chat.create(params)
                     .choices().stream()
                     .findFirst()

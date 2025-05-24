@@ -1,4 +1,4 @@
-package br.com.gzlabs.gzassist.presentation;
+package br.com.gzlabs.gzassist.desktop;
 
 import br.com.gzlabs.gzassist.config.AppConfig;
 import javafx.fxml.FXML;

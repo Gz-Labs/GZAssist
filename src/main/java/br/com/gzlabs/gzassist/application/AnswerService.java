@@ -4,10 +4,10 @@ import br.com.gzlabs.gzassist.core.AnswerProvider;
 import br.com.gzlabs.gzassist.core.HotkeyBinder;
 import br.com.gzlabs.gzassist.core.Mode;
 import br.com.gzlabs.gzassist.core.ScreenCapturer;
+import br.com.gzlabs.gzassist.desktop.UiEvent;
 import br.com.gzlabs.gzassist.errors.AiException;
 import br.com.gzlabs.gzassist.errors.CaptureException;
 import br.com.gzlabs.gzassist.errors.HotkeyException;
-import br.com.gzlabs.gzassist.presentation.UiEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
