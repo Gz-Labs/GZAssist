@@ -21,7 +21,7 @@ public class ThemeManager {
     private static void apply(Scene scene, Parent root, String themeFile, String themeClass) {
         scene.getStylesheets().clear();
         scene.getStylesheets().addAll(
-                Objects.requireNonNull(ThemeManager.class.getResource("/desktop/home/style.css")).toExternalForm(),
+                Objects.requireNonNull(ThemeManager.class.getResource("/desktop/common/main-style.css")).toExternalForm(),
                 Objects.requireNonNull(ThemeManager.class.getResource("/desktop/theme/" + themeFile)).toExternalForm()
         );
         root.getStyleClass().removeAll("theme-dark", "theme-light");
