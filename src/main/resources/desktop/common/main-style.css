@@ -3,7 +3,7 @@
 .root-card {
     -fx-border-radius: 18;
     -fx-background-radius: 18;
-    -fx-padding: 0 24 24 24;
+    -fx-padding: 0 24 40 24;
 }
 
 .title {
@@ -77,7 +77,7 @@
 }
 
 .footer-hbox {
-    -fx-padding: 22 0 0 0;
+    -fx-padding: 22 0 60 0;
 }
 
 .footer-btn {

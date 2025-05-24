@@ -6,7 +6,7 @@
     -fx-background-color: -fx-base-bg;
     -fx-border-radius: 18;
     -fx-background-radius: 18;
-    -fx-padding: 34 36 34 36;
+    -fx-padding: 0 24 36 24;
     -fx-font-family: -fx-font-family;
     -fx-effect: dropshadow(gaussian, rgba(24, 26, 27, 0.7), 24, 0.18, 0, 4);
 }
