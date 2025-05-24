@@ -1,8 +1,11 @@
-name: Build MSI on Release
+name: Build MSI and attach to Release
 
 on:
   release:
     types: [ created ]
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -15,7 +18,7 @@ jobs:
         with:
           distribution: zulu
           java-version: 21
-          java-package: 'jdk+fx'
+          java-package: jdk+fx
 
       - run: mvn -B clean package
 
@@ -38,4 +41,5 @@ jobs:
 
       - uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ github.event.release.tag_name }}
           files: target/dist/*.msi

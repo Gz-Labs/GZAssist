@@ -6,7 +6,7 @@
 
     <groupId>br.com.gabrizord.gzlabs</groupId>
     <artifactId>GZAssist</artifactId>
-    <version>0.1.0-beta</version>
+    <version>0.1.0</version>
     <name>GZAssist</name>
 
     <properties>
