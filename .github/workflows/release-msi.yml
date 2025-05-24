@@ -17,10 +17,6 @@ jobs:
           java-version: 21
           java-package: 'jdk+fx'
 
-      - uses: crazy-max/ghaction-chocolatey@v1
-        with:
-          args: install wixtoolset --version=3.11.2 --yes --no-progress
-
       - run: mvn -B clean package
 
       - shell: pwsh
