@@ -9,6 +9,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -25,12 +26,13 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("/desktop/home/home-view.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root, 430, 680);
+        scene.setFill(Color.TRANSPARENT);
         ThemeManager.applyTheme(scene, root);
         stage.setScene(scene);
         stage.setTitle("GZAssist");
         stage.setResizable(false);
         stage.setMaximized(false);
-        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.TRANSPARENT);
         stage.show();
 
         FXMLLoader overlayLoader = new FXMLLoader(Main.class.getResource("/desktop/overlay/overlay-view.fxml"));

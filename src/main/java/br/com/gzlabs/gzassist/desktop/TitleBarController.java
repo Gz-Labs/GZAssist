@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -68,6 +69,7 @@ public class TitleBarController {
             Parent root = loader.load();
 
             Scene scene = new Scene(root, 650, 450);
+            scene.setFill(Color.TRANSPARENT);
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/desktop/settings/settings.css")).toExternalForm());
             ThemeManager.applyTheme(scene, root);
 
@@ -76,7 +78,7 @@ public class TitleBarController {
             stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(settingsButton.getScene().getWindow());
-            stage.initStyle(StageStyle.UNDECORATED);
+            stage.initStyle(StageStyle.TRANSPARENT);
             stage.showAndWait();
         } catch (IOException e) {
             LOG.error("Failed to open the settings view.", e);

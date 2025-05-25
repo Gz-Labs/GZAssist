@@ -3,7 +3,7 @@
     -fx-base-bg: #23232A;
     -fx-text-color: #ECECF1;
     -fx-subtext-color: #B3B3BE;
-    -fx-border-color: #37384899;
+    -fx-border-color: transparent;
     -fx-accent-color: #10A37F;
     -fx-font-family: "Segoe UI Semibold", "Roboto", Arial, sans-serif;
 }
@@ -12,7 +12,7 @@
     -fx-base-bg: #FFFFFF;
     -fx-text-color: #23232A;
     -fx-subtext-color: #555555;
-    -fx-border-color: #DDDDDD;
+    -fx-border-color: transparent;
     -fx-accent-color: #007ACC;
     -fx-font-family: "Segoe UI", "Roboto", Arial, sans-serif;
 }
