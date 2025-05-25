@@ -17,7 +17,11 @@ public class SettingsController {
     private Spinner<Integer> timeoutSpinner;
 
     @FXML
+    private TitleBarController titleBarController;
+
+    @FXML
     public void initialize() {
+        titleBarController.setSettingsButtonVisible(false);
         carregarConfiguracoesGerais();
     }
 

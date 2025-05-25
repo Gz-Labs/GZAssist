@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,6 +25,9 @@ public class TitleBarController {
 
     @FXML
     private Button closeButton;
+
+    @FXML
+    private Button settingsButton;
 
     @FXML
     private HBox titleBar;
@@ -58,9 +62,6 @@ public class TitleBarController {
     }
 
     @FXML
-    private Button settingsButton; // Adicione isso!
-
-    @FXML
     protected void onSettingsClick() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/desktop/settings/settings-view.fxml"));
@@ -75,9 +76,17 @@ public class TitleBarController {
             stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(settingsButton.getScene().getWindow());
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.showAndWait();
         } catch (IOException e) {
             LOG.error("Failed to open the settings view.", e);
+        }
+    }
+
+    public void setSettingsButtonVisible(boolean visible) {
+        if (settingsButton != null) {
+            settingsButton.setVisible(visible);
+            settingsButton.setManaged(visible);
         }
     }
 }

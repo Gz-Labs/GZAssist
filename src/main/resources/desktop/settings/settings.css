@@ -9,3 +9,24 @@
 #settingsTabPane .tab-content-area {
     -fx-padding: 12 0 0 0;
 }
+
+.settings-root {
+    -fx-padding: 40 30 30 40;
+    -fx-spacing: 30;
+}
+
+.tab-section {
+    -fx-padding: 14 18;
+}
+
+.tab-spacing-lg {
+    -fx-spacing: 16;
+}
+
+.tab-spacing-sm {
+    -fx-spacing: 12;
+}
+
+.footer-actions {
+    -fx-spacing: 12;
+}
