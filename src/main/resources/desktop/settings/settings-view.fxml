@@ -1,88 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<StackPane xmlns:fx="http://javafx.com/fxml"
-           fx:controller="br.com.gzlabs.gzassist.desktop.SettingsController"
-           stylesheets="@settings.css"
-           styleClass="root-card">
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="br.com.gzlabs.gzassist.desktop.SettingsController"
+            stylesheets="@settings.css"
+            styleClass="root-card">
 
-    <VBox spacing="30" alignment="TOP_CENTER" maxWidth="800">
-        <padding>
-            <Insets top="40" bottom="30" left="40" right="40"/>
-        </padding>
+    <top>
+        <fx:include fx:id="titleBar" source="../common/title-bar.fxml"/>
+    </top>
 
-        <Label text="Settings" styleClass="title"/>
+    <center>
+        <VBox styleClass="settings-root">
+            <Label text="Settings" styleClass="title"/>
 
-        <TabPane id="settingsTabPane"
-                 tabClosingPolicy="UNAVAILABLE">
-            <!-- GENERAL -->
-            <Tab text="General">
-                <VBox spacing="16">
-                    <padding>
-                        <Insets top="14" right="18" bottom="14" left="18"/>
-                    </padding>
+            <TabPane id="settingsTabPane" tabClosingPolicy="UNAVAILABLE">
+                <Tab text="General">
+                    <VBox styleClass="tab-spacing-lg">
+                        <Label text="Overlay timeout (seconds):" styleClass="subtitle"/>
+                        <Spinner fx:id="timeoutSpinner" prefWidth="80"/>
+                        <Label text="(More general settings coming soon...)" styleClass="subtitle"/>
+                    </VBox>
+                </Tab>
 
-                    <Label text="Overlay timeout (seconds):" styleClass="subtitle"/>
-                    <Spinner fx:id="timeoutSpinner" prefWidth="80"/>
+                <Tab text="API Keys">
+                    <VBox styleClass="tab-spacing-lg">
+                        <Label text="OpenAI API Key:" styleClass="subtitle"/>
+                        <TextField fx:id="apiKeyField" promptText="sk-..."/>
+                    </VBox>
+                </Tab>
 
-                    <Label text="(More general settings coming soon...)" styleClass="subtitle"/>
-                </VBox>
-            </Tab>
+                <Tab text="Hotkeys">
+                    <VBox styleClass="tab-spacing-lg">
+                        <Label text="Global hotkey:" styleClass="subtitle"/>
+                        <TextField fx:id="hotkeyField" promptText="CTRL+ALT+K"/>
+                    </VBox>
+                </Tab>
 
-            <!-- API KEYS -->
-            <Tab text="API Keys">
-                <VBox spacing="16">
-                    <padding>
-                        <Insets top="14" right="18" bottom="14" left="18"/>
-                    </padding>
+                <Tab text="Interface">
+                    <VBox styleClass="tab-spacing-sm">
+                        <Label text="(Theme and appearance settings coming soon...)" styleClass="subtitle"/>
+                    </VBox>
+                </Tab>
 
-                    <Label text="OpenAI API Key:" styleClass="subtitle"/>
-                    <TextField fx:id="apiKeyField" promptText="sk-..."/>
-                </VBox>
-            </Tab>
+                <Tab text="Advanced">
+                    <VBox styleClass="tab-spacing-sm">
+                        <Label text="(Advanced features coming soon...)" styleClass="subtitle"/>
+                    </VBox>
+                </Tab>
+            </TabPane>
 
-            <!-- HOTKEYS -->
-            <Tab text="Hotkeys">
-                <VBox spacing="16">
-                    <padding>
-                        <Insets top="14" right="18" bottom="14" left="18"/>
-                    </padding>
-
-                    <Label text="Global hotkey:" styleClass="subtitle"/>
-                    <TextField fx:id="hotkeyField" promptText="CTRL+ALT+K"/>
-                </VBox>
-            </Tab>
-
-            <!-- INTERFACE -->
-            <Tab text="Interface">
-                <VBox spacing="12">
-                    <padding>
-                        <Insets top="14" right="18" bottom="14" left="18"/>
-                    </padding>
-                    <Label text="(Theme and appearance settings coming soon...)" styleClass="subtitle"/>
-                </VBox>
-            </Tab>
-
-            <!-- ADVANCED -->
-            <Tab text="Advanced">
-                <VBox spacing="12">
-                    <padding>
-                        <Insets top="14" right="18" bottom="14" left="18"/>
-                    </padding>
-                    <Label text="(Advanced features coming soon...)" styleClass="subtitle"/>
-                </VBox>
-            </Tab>
-
-        </TabPane>
-
-        <HBox spacing="12" alignment="CENTER_RIGHT" maxWidth="480">
-            <Region HBox.hgrow="ALWAYS"/>
-            <Button text="Cancel" onAction="#onCancelClick" styleClass="footer-btn"/>
-            <Button text="Save" onAction="#onSaveClick" styleClass="footer-btn"/>
-        </HBox>
-
-    </VBox>
-
-</StackPane>
+            <HBox alignment="CENTER_RIGHT" maxWidth="480" styleClass="footer-actions">
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Cancel" onAction="#onCancelClick" styleClass="btn"/>
+                <Button text="Save" onAction="#onSaveClick" styleClass="btn"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

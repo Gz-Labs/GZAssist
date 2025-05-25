@@ -17,11 +17,11 @@ public class SettingsController {
     private Spinner<Integer> timeoutSpinner;
 
     @FXML
-    public void initialize() {
-        carregarConfiguracoesGerais();
-    }
+    private TitleBarController titleBarController;
 
-    private void carregarConfiguracoesGerais() {
+    @FXML
+    public void initialize() {
+        titleBarController.setSettingsButtonVisible(false);
         apiKeyField.setText(AppConfig.getApiKey());
         hotkeyField.setText(AppConfig.getHotkey());
         timeoutSpinner.setValueFactory(
@@ -31,22 +31,22 @@ public class SettingsController {
 
     @FXML
     protected void onSaveClick() {
-        salvarConfiguracoesGerais();
+        saveSettings();
         closeWindow();
     }
 
-    private void salvarConfiguracoesGerais() {
+    @FXML
+    protected void onCancelClick() {
+        closeWindow();
+    }
+
+    private void saveSettings() {
         AppConfig.setApiKey(apiKeyField.getText().trim());
         AppConfig.setHotkey(hotkeyField.getText().trim());
         AppConfig.setOverlayTimeout(timeoutSpinner.getValue());
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "Settings saved successfully!", ButtonType.OK);
         alert.setHeaderText(null);
         alert.showAndWait();
-    }
-
-    @FXML
-    protected void onCancelClick() {
-        closeWindow();
     }
 
     private void closeWindow() {
